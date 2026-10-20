@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Instrument+Serif:ital@0,400;1,400&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Scrollbar and typography clamps */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #FAF7F0; }
+::-webkit-scrollbar-thumb { background: #E7E0D5; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #B98550; }
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #FAF7F0;
+  color: #292B28;
+  font-family: 'Space Grotesk', sans-serif;
+  overflow-x: hidden;
+}
+
+.clamp-hero {
+  font-size: clamp(2.5rem, 5.5vw, 4.75rem);
+  line-height: 1.05;
+}
+.clamp-section {
+  font-size: clamp(2.1rem, 4vw, 3.25rem);
+  line-height: 1.12;
+}
+.clamp-sub {
+  font-size: clamp(1rem, 1.2vw, 1.15rem);
+}
+.grid-bg-subtle {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(231, 224, 213, 0.35) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(231, 224, 213, 0.35) 1px, transparent 1px);
+}
+.editorial-border-bottom {
+  border-bottom: 1px solid #E7E0D5;
+}
+.editorial-border-top {
+  border-top: 1px solid #E7E0D5;
+}
+.nav-scrolled {
+  background-color: rgba(250, 247, 240, 0.92);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 1px 0 rgba(231, 224, 213, 0.8);
+}
