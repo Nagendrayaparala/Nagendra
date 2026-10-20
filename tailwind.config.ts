@@ -27,11 +27,21 @@ const config: Config = {
       },
       boxShadow: {
         '2xs': '0 1px 2px rgba(41, 43, 40, 0.05)',
+        'accent-glow': '0 12px 30px -8px rgba(185, 133, 80, 0.22)',
+        'lift': '0 18px 36px -10px rgba(41, 43, 40, 0.08), 0 0 1px rgba(41, 43, 40, 0.1)',
       },
       keyframes: {
         subtleFloat: {
           '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
-          '50%': { transform: 'translateY(-6px) rotate(0.6deg)' },
+          '50%': { transform: 'translateY(-7px) rotate(0.5deg)' },
+        },
+        floatDelay: {
+          '0%, 100%': { transform: 'translateY(0px) rotate(1deg)' },
+          '50%': { transform: 'translateY(-6px) rotate(-0.5deg)' },
+        },
+        haloBreathe: {
+          '0%, 100%': { transform: 'scale(1)', opacity: '0.6' },
+          '50%': { transform: 'scale(1.12)', opacity: '0.85' },
         },
         pulseSubtle: {
           '0%, 100%': { opacity: '1' },
@@ -40,12 +50,35 @@ const config: Config = {
         codeBlink: {
           '0%, 100%': { opacity: '1' },
           '50%': { opacity: '0' },
-        }
+        },
+        shimmerSweep: {
+          '0%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(100%)' },
+        },
+        radarPing: {
+          '0%': { transform: 'scale(0.95)', opacity: '0.8' },
+          '100%': { transform: 'scale(2.2)', opacity: '0' },
+        },
+        gradientMove: {
+          '0%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+          '100%': { backgroundPosition: '0% 50%' },
+        },
+        ripple: {
+          '0%': { transform: 'scale(0.85)', opacity: '0.9' },
+          '100%': { transform: 'scale(1.4)', opacity: '0' },
+        },
       },
       animation: {
         'avatar-float': 'subtleFloat 6s ease-in-out infinite',
+        'code-float': 'floatDelay 7s ease-in-out infinite',
+        'halo-breathe': 'haloBreathe 7s ease-in-out infinite',
         'pulse-dot': 'pulseSubtle 2.2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         'cursor': 'codeBlink 1s infinite',
+        'shimmer': 'shimmerSweep 2.5s infinite',
+        'radar': 'radarPing 2s cubic-bezier(0, 0, 0.2, 1) infinite',
+        'gradient': 'gradientMove 6s ease infinite',
+        'ripple': 'ripple 1.8s cubic-bezier(0.16, 1, 0.3, 1) infinite',
       }
     }
   },
