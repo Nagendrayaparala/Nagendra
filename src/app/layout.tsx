@@ -30,12 +30,28 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if (typeof window !== 'undefined') {
+                window.addEventListener('error', function(e) {
+                  if (e.filename && (e.filename.startsWith('chrome-extension://') || e.filename.startsWith('moz-extension://'))) {
+                    e.stopImmediatePropagation();
+                  }
+                }, true);
+              }
+            `,
+          }}
+        />
       </head>
-      <body className="bg-bg text-ink font-sans antialiased selection:bg-accent/20 selection:text-ink relative overflow-x-hidden min-h-screen">
+      <body
+        suppressHydrationWarning
+        className="bg-bg text-ink font-sans antialiased selection:bg-accent/20 selection:text-ink relative overflow-x-hidden min-h-screen"
+      >
         {children}
       </body>
     </html>
