@@ -34,19 +34,6 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              if (typeof window !== 'undefined') {
-                window.addEventListener('error', function(e) {
-                  if (e.filename && (e.filename.startsWith('chrome-extension://') || e.filename.startsWith('moz-extension://'))) {
-                    e.stopImmediatePropagation();
-                  }
-                }, true);
-              }
-            `,
-          }}
-        />
       </head>
       <body
         suppressHydrationWarning

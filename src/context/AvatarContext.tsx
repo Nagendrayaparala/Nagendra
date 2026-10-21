@@ -1,6 +1,6 @@
 'use client';
 
-import React, { createContext, useContext, useState, useCallback, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useCallback, useEffect, ReactNode } from 'react';
 
 export type PoseType = 'idle' | 'greeting' | 'thinking' | 'coding';
 
@@ -17,6 +17,21 @@ export function AvatarProvider({ children }: { children: ReactNode }) {
   const [currentPose, setCurrentPose] = useState<PoseType>('idle');
   const [statusMessage, setStatusMessage] = useState<string>('Avatar idle: Natural breathing state');
   const [isPillActive, setIsPillActive] = useState<boolean>(false);
+
+  // Intercept third-party browser extension errors (e.g. Emily AI) from triggering Next.js dev overlays
+  useEffect(() => {
+    const handleExtensionError = (e: ErrorEvent) => {
+      if (
+        e.filename &&
+        (e.filename.startsWith('chrome-extension://') || e.filename.startsWith('moz-extension://'))
+      ) {
+        e.stopImmediatePropagation();
+      }
+    };
+
+    window.addEventListener('error', handleExtensionError, true);
+    return () => window.removeEventListener('error', handleExtensionError, true);
+  }, []);
 
   const setPose = useCallback((pose: PoseType, message: string) => {
     setCurrentPose(pose);
