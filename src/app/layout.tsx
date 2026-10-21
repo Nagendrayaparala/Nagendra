@@ -3,18 +3,31 @@ import './globals.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://nagendra.dev'),
-  title: 'Yaparala Nagendra — Frontend Developer',
-  description: 'Frontend developer dedicated to crafting thoughtful user interfaces, reliable component architectures, and fluid web experiences.',
-  keywords: ['Yaparala Nagendra', 'Frontend Developer', 'React.js', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Portfolio'],
-  authors: [{ name: 'Yaparala Nagendra' }],
-  creator: 'Yaparala Nagendra',
+  title: 'Nagendra Yaparala — Frontend Developer & Interface Engineer',
+  description:
+    'Personal portfolio of Nagendra Yaparala, a frontend developer engineering thoughtful digital products with React, Next.js, and modern interface architectures at MockWin.',
+  keywords: [
+    'Nagendra Yaparala',
+    'Yaparala Nagendra',
+    'Frontend Developer',
+    'Interface Engineer',
+    'React.js',
+    'Next.js',
+    'TypeScript',
+    'Tailwind CSS',
+    'MockWin',
+    'Portfolio',
+  ],
+  authors: [{ name: 'Nagendra Yaparala' }],
+  creator: 'Nagendra Yaparala',
   openGraph: {
     type: 'website',
     locale: 'en_US',
     url: 'https://nagendra.dev',
-    title: 'Yaparala Nagendra — Frontend Developer',
-    description: 'I build digital experiences that feel effortless.',
-    siteName: 'Nagendra Portfolio',
+    title: 'Nagendra Yaparala — Frontend Developer & Interface Engineer',
+    description:
+      'Frontend developer. Interface engineer. Detail obsessive. Building thoughtful digital products with React and modern web technologies.',
+    siteName: 'Nagendra Yaparala Portfolio',
   },
 };
 

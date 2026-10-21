@@ -106,15 +106,39 @@ export default function Hero() {
               </div>
             </div>
 
-            <h1 className="clamp-hero font-serif font-normal text-ink tracking-tight">
-              I build digital experiences that feel <em className="italic text-accent">effortless</em>.
-            </h1>
+            <div className="space-y-3">
+              <span className="font-mono text-sm tracking-wider uppercase text-accent font-semibold block">
+                Nagendra Yaparala
+              </span>
+              <h1 className="clamp-hero font-serif font-normal text-ink tracking-tight leading-[1.08]">
+                Frontend developer. Interface engineer. <em className="italic text-accent">Detail obsessive.</em>
+              </h1>
+            </div>
 
             <p className="clamp-sub text-ink-muted max-w-xl font-normal leading-relaxed">
-              I&apos;m <span className="text-ink font-medium">Yaparala Nagendra</span>, a frontend developer dedicated to
-              crafting thoughtful user interfaces, reliable component architectures, and fluid web experiences that
-              elevate real products.
+              I build thoughtful digital products with React, modern frontend technologies, and carefully crafted
+              interactions. Currently engineering product interfaces at{' '}
+              <strong className="text-ink font-medium underline decoration-accent/40 underline-offset-4">MockWin</strong>.
             </p>
+
+            {/* Availability Indicator & Exploration Cue */}
+            <div className="flex flex-wrap items-center gap-3 text-xs font-mono text-ink-muted pt-1">
+              <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface border border-border shadow-2xs">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span>
+                </span>
+                <span className="text-emerald-800 font-medium">Available for frontend roles &amp; contracts</span>
+              </span>
+
+              <a
+                href="#work"
+                className="hover:text-ink transition-colors flex items-center gap-1 group px-2 py-1"
+              >
+                <span>Explore selected work</span>
+                <span className="text-accent group-hover:translate-y-0.5 transition-transform">↓</span>
+              </a>
+            </div>
 
             {/* Core Tech Line with Bespoke Indicators */}
             <div className="flex flex-wrap items-center gap-2 pt-2 text-xs font-mono text-ink-muted">

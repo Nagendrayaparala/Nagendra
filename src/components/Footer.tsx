@@ -1,16 +1,15 @@
-'use client';
-
 import React from 'react';
 import { ArrowUp } from 'lucide-react';
+import { PERSONAL_INFO } from '@/data/portfolioData';
 
 export default function Footer() {
   return (
     <footer className="py-12 border-t border-border bg-bg text-ink-muted text-xs font-mono">
       <div className="max-w-6xl mx-auto px-6 md:px-10 flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="flex items-center gap-3">
-          <span className="font-bold text-ink">NAGENDRA.</span>
+          <span className="font-bold text-ink uppercase tracking-wider">{PERSONAL_INFO.fullName}.</span>
           <span>—</span>
-          <span>Designed &amp; engineered with React, Next.js tokens &amp; semantic HTML</span>
+          <span>Minimal editorial portfolio engineered with React &amp; Next.js</span>
         </div>
 
         <div className="flex items-center gap-6">
@@ -23,7 +22,7 @@ export default function Footer() {
               <ArrowUp className="w-3 h-3 transition-transform group-hover:-translate-y-0.5" />
             </div>
           </a>
-          <span>© 2024 Yaparala Nagendra</span>
+          <span>© 2026 {PERSONAL_INFO.fullName}</span>
         </div>
       </div>
     </footer>

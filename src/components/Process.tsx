@@ -47,7 +47,7 @@ export default function Process() {
             <div className="stepper-track-line" />
 
             <div className="process-steps-row">
-              {PROCESS_STEPS.map((step) => (
+              {PROCESS_STEPS.map((step: { id: string; iconName: string; title: string }) => (
                 <div key={step.id} className="process-step-node">
                   <div className="step-circle-icon">{getStepIcon(step.iconName)}</div>
                   <span className="step-node-text font-sans">{step.title}</span>

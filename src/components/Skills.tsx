@@ -125,7 +125,7 @@ export default function Skills() {
 
         {/* 10 Skill Cards Row */}
         <div className="skills-deck">
-          {SKILLS.map((skill) => (
+          {SKILLS.map((skill: { name: string; iconName: string }) => (
             <div key={skill.name} className="skill-tile card-clean">
               <div className="skill-icon-box">{getSkillIconSvg(skill.iconName)}</div>
               <span className="skill-name font-sans">{skill.name}</span>

@@ -1,144 +1,239 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import ScrollReveal from './ScrollReveal';
+import { PERSONAL_INFO } from '@/data/portfolioData';
 import {
-  Search,
-  Boxes,
-  Code2,
-  Gauge,
   Sparkles,
-  MapPin,
-  Globe,
+  Compass,
+  Layers,
+  Zap,
+  ShieldCheck,
+  Briefcase,
+  GraduationCap,
+  ArrowRight,
+  Code2,
 } from 'lucide-react';
 
 export default function About() {
+  const [activeTab, setActiveTab] = useState<'philosophy' | 'timeline'>('philosophy');
+
+  const principles = [
+    {
+      number: '01',
+      title: 'Atomic Boundaries',
+      description:
+        'Map out clear single-source-of-truth component boundaries, explicit props contracts, and resilient error boundaries before touching styling.',
+      tag: 'Architecture',
+    },
+    {
+      number: '02',
+      title: 'Invisible Latency',
+      description:
+        'Care deeply about actual user latency: eliminating cumulative layout shifts (CLS: 0), pruning render churn, and keeping interaction to next paint (INP) instantaneous.',
+      tag: 'Performance',
+    },
+    {
+      number: '03',
+      title: 'Ergonomic Accessibility',
+      description:
+        'Prioritize semantic HTML landmarks, logical tabindex traversal, and high-contrast color pairings from day zero so every user enjoys the product.',
+      tag: 'Accessibility (a11y)',
+    },
+    {
+      number: '04',
+      title: 'Design Sensitivity',
+      description:
+        'Treat typography, micro-spacing, and transition physics as first-class engineering responsibilities, translating creative direction into robust code.',
+      tag: 'Interaction Craft',
+    },
+  ];
+
+  const milestones = [
+    {
+      year: '2024 — Present',
+      title: 'Frontend Developer at MockWin',
+      description:
+        'Engineering candidate assessment simulator interfaces, centralized design tokens, and real-time scorecards in React, Next.js, and TypeScript.',
+      icon: Briefcase,
+      tag: 'Current Role',
+    },
+    {
+      year: '2022 — 2023',
+      title: 'Web Development Internship',
+      description:
+        'Developed responsive cross-browser web layouts from Figma design specifications, conducted component testing, and participated in Git PR reviews.',
+      icon: Code2,
+      tag: 'Professional Practice',
+    },
+    {
+      year: '2019 — 2023',
+      title: 'B.Tech in Computer Science · RGUKT',
+      description:
+        'Graduated with an 8.76 CGPA, building strong foundations in data structures, algorithms, database systems, and modern web architectures.',
+      icon: GraduationCap,
+      tag: 'CGPA: 8.76',
+    },
+  ];
+
   return (
-    <section id="about" className="py-20 md:py-24 bg-bg-alt/40 border-y border-border">
+    <section id="about" className="py-24 md:py-32 bg-bg-alt/30 border-y border-border">
       <div className="max-w-6xl mx-auto px-6 md:px-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-          {/* Left 5 cols: Avatar Thinking / Process Pose with ScrollReveal */}
+        <ScrollReveal>
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-border">
+            <div>
+              <div className="flex items-center gap-2 font-mono text-xs text-accent uppercase tracking-widest mb-2">
+                <span>02 / Perspective</span>
+                <span className="w-8 h-px bg-accent"></span>
+              </div>
+              <h2 className="clamp-section font-serif font-normal text-ink tracking-tight">
+                About &amp; Approach.
+              </h2>
+            </div>
+
+            <p className="font-mono text-xs text-ink-muted max-w-xs mt-2 md:mt-0">
+              Frontend engineering where design sensitivity meets computational discipline.
+            </p>
+          </div>
+        </ScrollReveal>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          {/* Left Column (5 cols): Portrait with Architectural Dual-Tone Stage */}
           <ScrollReveal delayMs={0} className="lg:col-span-5 flex flex-col items-center">
             <div
-              className="card-hover-lift relative w-64 h-64 md:w-72 md:h-72 rounded-2xl border border-border p-4 shadow-sm flex flex-col items-center justify-end overflow-hidden group hover:shadow-theme-glow transition-all duration-500"
+              className="card-hover-lift relative w-64 h-72 sm:w-80 sm:h-96 rounded-3xl border border-border p-5 shadow-md flex flex-col items-center justify-end overflow-hidden group hover:shadow-theme-glow transition-all duration-500"
               style={{ background: 'var(--theme-arch-gradient)' }}
             >
               <div
-                className="animate-halo-breathe absolute inset-4 rounded-full blur-xl -z-10"
+                className="animate-halo-breathe absolute inset-4 rounded-full blur-2xl -z-10"
                 style={{ background: 'radial-gradient(circle, var(--theme-glow) 0%, transparent 70%)' }}
               />
+
               <img
                 src="/avathars/nagendra_portrait.png"
-                alt="Yaparala Nagendra - Process portrait"
-                className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                alt="Nagendra Yaparala - Frontend developer portrait"
+                className="w-full h-full object-cover object-top relative z-10 transition-transform duration-700 group-hover:scale-105"
               />
-              <div className="absolute top-3 left-3 bg-surface/95 border border-border px-3 py-1 rounded-full text-[10px] font-mono text-ink-muted flex items-center gap-1.5 shadow-2xs group-hover:border-accent transition-colors">
+
+              <div className="absolute top-4 left-4 z-20 bg-surface/90 border border-border px-3 py-1.5 rounded-full text-[10px] font-mono text-ink flex items-center gap-2 shadow-2xs backdrop-blur-md">
                 <Sparkles className="w-3 h-3 text-accent animate-pulse-dot" />
-                <span>Focus: Clean Architecture</span>
+                <span>Frontend Developer · MockWin</span>
               </div>
             </div>
-            <p className="font-mono text-xs text-ink-faint mt-3 text-center italic">
-              &ldquo;Good frontend code makes complexity invisible to the user.&rdquo;
-            </p>
+
+            <div className="mt-6 text-center space-y-1">
+              <span className="font-mono text-xs text-ink font-semibold block">
+                Nagendra Yaparala
+              </span>
+              <p className="font-mono text-[11px] text-ink-faint italic max-w-xs">
+                &ldquo;Good frontend code makes complex systems feel completely natural to the user.&rdquo;
+              </p>
+            </div>
           </ScrollReveal>
 
-          {/* Right 7 cols: Philosophy & How I Work */}
-          <ScrollReveal delayMs={100} className="lg:col-span-7 space-y-6">
-            <div className="flex items-center gap-2 font-mono text-xs text-accent uppercase tracking-widest">
-              <span>04 / Philosophy</span>
-              <span className="w-6 h-px bg-accent"></span>
-            </div>
+          {/* Right Column (7 cols): Editorial Typography & Interactive Tab Switcher */}
+          <ScrollReveal delayMs={100} className="lg:col-span-7 space-y-8">
+            <div className="space-y-4">
+              <h3 className="font-serif text-2xl sm:text-3xl md:text-4xl text-ink leading-tight">
+                I build digital interfaces with deliberate care, high responsiveness, and zero fluff.
+              </h3>
 
-            <h2 className="clamp-section font-serif font-normal text-ink">
-              A little about how I work.
-            </h2>
+              <p className="text-sm sm:text-base text-ink-muted leading-relaxed font-sans">
+                {PERSONAL_INFO.aboutIntro} With approximately 1 year of professional frontend experience,
+                I currently engineer product interfaces at <strong className="text-ink font-medium">MockWin</strong>,
+                specializing in technical assessment runners, design systems, and responsive MERN/Next.js architectures.
+              </p>
 
-            <p className="text-ink-muted leading-relaxed text-sm md:text-base">
-              I believe that great user interfaces are not born from decorative trends, but from disciplined engineering
-              and thoughtful empathy. My workflow follows a straightforward five-stage cycle:
-            </p>
-
-            {/* 4 Steps Process Grid with Staggered ScrollReveal & Lift Animations */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-              <div className="card-hover-lift bg-surface p-5 rounded-xl border border-border shadow-2xs group">
-                <div className="flex items-center justify-between mb-3">
-                  <span className="font-mono text-xs text-accent font-semibold group-hover:text-ink transition-colors">
-                    01 · Understand
-                  </span>
-                  <div className="w-7 h-7 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-surface transition-colors">
-                    <Search className="w-3.5 h-3.5" />
-                  </div>
+              <div className="p-4 rounded-xl bg-surface border border-border/80 text-xs font-mono text-ink-muted space-y-2">
+                <div className="flex items-center gap-2 text-accent font-semibold">
+                  <Compass className="w-3.5 h-3.5" />
+                  <span>What I Am Currently Exploring:</span>
                 </div>
-                <h4 className="font-medium text-sm text-ink mb-1 group-hover:text-accent transition-colors">
-                  Grasp requirements
-                </h4>
-                <p className="text-xs text-ink-muted leading-normal">
-                  Deep dive into user intent, edge cases, and design specifications before touching code.
-                </p>
-              </div>
-
-              <div className="card-hover-lift bg-surface p-5 rounded-xl border border-border shadow-2xs group">
-                <div className="flex items-center justify-between mb-3">
-                  <span className="font-mono text-xs text-accent font-semibold group-hover:text-ink transition-colors">
-                    02 · Structure
-                  </span>
-                  <div className="w-7 h-7 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-surface transition-colors">
-                    <Boxes className="w-3.5 h-3.5" />
-                  </div>
-                </div>
-                <h4 className="font-medium text-sm text-ink mb-1 group-hover:text-accent transition-colors">
-                  Reusable components
-                </h4>
-                <p className="text-xs text-ink-muted leading-normal">
-                  Map out atomic UI boundaries, props contracts, and single sources of truth.
-                </p>
-              </div>
-
-              <div className="card-hover-lift bg-surface p-5 rounded-xl border border-border shadow-2xs group">
-                <div className="flex items-center justify-between mb-3">
-                  <span className="font-mono text-xs text-accent font-semibold group-hover:text-ink transition-colors">
-                    03 · Build
-                  </span>
-                  <div className="w-7 h-7 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-surface transition-colors">
-                    <Code2 className="w-3.5 h-3.5" />
-                  </div>
-                </div>
-                <h4 className="font-medium text-sm text-ink mb-1 group-hover:text-accent transition-colors">
-                  Responsive layouts
-                </h4>
-                <p className="text-xs text-ink-muted leading-normal">
-                  Code fluid, accessible, mobile-first layouts without layout shifts or overflow.
-                </p>
-              </div>
-
-              <div className="card-hover-lift bg-surface p-5 rounded-xl border border-border shadow-2xs group">
-                <div className="flex items-center justify-between mb-3">
-                  <span className="font-mono text-xs text-accent font-semibold group-hover:text-ink transition-colors">
-                    04 · Test &amp; Refine
-                  </span>
-                  <div className="w-7 h-7 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-surface transition-colors">
-                    <Gauge className="w-3.5 h-3.5" />
-                  </div>
-                </div>
-                <h4 className="font-medium text-sm text-ink mb-1 group-hover:text-accent transition-colors">
-                  Verify real behavior
-                </h4>
-                <p className="text-xs text-ink-muted leading-normal">
-                  Stress-test interactions, latency states, screen sizes, and keyboard navigation.
+                <p className="leading-relaxed">
+                  Next.js App Router performance optimizations, micro-interaction physics, accessible keyboard focus rings,
+                  and headless UI component contracts.
                 </p>
               </div>
             </div>
 
-            <div className="pt-2 text-xs font-mono text-ink-muted flex flex-wrap items-center gap-4">
-              <span className="inline-flex items-center gap-1.5 text-emerald-800 bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-full font-medium shadow-2xs">
-                <MapPin className="w-3 h-3 text-emerald-700 animate-pulse-dot" />
-                <span>Based in India</span>
-              </span>
-              <span className="text-ink-faint">·</span>
-              <span className="inline-flex items-center gap-1.5 text-ink">
-                <Globe className="w-3.5 h-3.5 text-accent" />
-                <span>Available worldwide for Remote roles &amp; high-impact contracts</span>
-              </span>
+            {/* Toggle Tabs: Principles vs Timeline */}
+            <div className="pt-2">
+              <div className="flex items-center gap-3 border-b border-border pb-3 mb-6 font-mono text-xs">
+                <button
+                  type="button"
+                  onClick={() => setActiveTab('philosophy')}
+                  className={`pb-1 transition-all cursor-pointer relative ${
+                    activeTab === 'philosophy'
+                      ? 'text-ink font-bold border-b-2 border-accent'
+                      : 'text-ink-muted hover:text-ink'
+                  }`}
+                >
+                  Core Engineering Principles
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setActiveTab('timeline')}
+                  className={`pb-1 transition-all cursor-pointer relative ${
+                    activeTab === 'timeline'
+                      ? 'text-ink font-bold border-b-2 border-accent'
+                      : 'text-ink-muted hover:text-ink'
+                  }`}
+                >
+                  Professional Milestones
+                </button>
+              </div>
+
+              {activeTab === 'philosophy' ? (
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {principles.map((p) => (
+                    <div
+                      key={p.number}
+                      className="card-hover-lift p-5 rounded-xl bg-surface border border-border shadow-2xs group"
+                    >
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="font-mono text-xs text-accent font-semibold">
+                          {p.number}
+                        </span>
+                        <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-bg border border-border text-ink-muted">
+                          {p.tag}
+                        </span>
+                      </div>
+                      <h4 className="font-serif text-lg text-ink group-hover:text-accent transition-colors">
+                        {p.title}
+                      </h4>
+                      <p className="text-xs text-ink-muted leading-relaxed mt-1.5">
+                        {p.description}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="space-y-4">
+                  {milestones.map((m) => {
+                    const Icon = m.icon;
+                    return (
+                      <div
+                        key={m.title}
+                        className="p-5 rounded-xl bg-surface border border-border shadow-2xs flex items-start gap-4"
+                      >
+                        <div className="w-9 h-9 rounded-lg bg-bg border border-border flex items-center justify-center text-accent shrink-0 mt-0.5">
+                          <Icon className="w-4 h-4" />
+                        </div>
+                        <div className="flex-1 space-y-1">
+                          <div className="flex flex-wrap items-center justify-between gap-2">
+                            <h4 className="font-sans font-medium text-sm text-ink">{m.title}</h4>
+                            <span className="font-mono text-[11px] text-accent font-medium">
+                              {m.year}
+                            </span>
+                          </div>
+                          <p className="text-xs text-ink-muted leading-relaxed">{m.description}</p>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
             </div>
           </ScrollReveal>
         </div>

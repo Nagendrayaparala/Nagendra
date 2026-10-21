@@ -1,414 +1,324 @@
 'use client';
 
-import React, { useState } from 'react';
-import { useAvatar } from '@/context/AvatarContext';
+import React, { useState, useRef, useEffect } from 'react';
+import { Project, ProjectCategory } from '@/types';
+import { PROJECTS } from '@/data/portfolioData';
+import ProjectModal from './ProjectModal';
 import ScrollReveal from './ScrollReveal';
 import {
-  Layers,
-  Globe,
-  Layout,
-  Smartphone,
   ArrowUpRight,
-  ExternalLink,
-  Zap,
-  ShieldCheck,
-  CheckCircle2,
-  ShoppingCart,
-  CreditCard,
-  Radio,
-  Wifi,
-  Battery,
   Sparkles,
-  ShoppingBag,
+  Layers,
+  LayoutList,
+  LayoutGrid,
+  CheckCircle2,
+  ExternalLink,
+  ChevronRight,
+  Code2,
 } from 'lucide-react';
 
-type CategoryType = 'all' | 'webapp' | 'product' | 'mobile';
-
-interface Project {
-  id: string;
-  title: string;
-  category: CategoryType;
-  categoryLabel: string;
-  year: string;
-  description: string;
-  tags: string[];
-  colSpan: string;
-  pose: 'coding' | 'thinking' | 'greeting';
-  poseMessage: string;
-  footerLabel: string;
-  actionText: string;
-  actionHref: string;
-  preview: React.ReactNode;
-}
-
 export default function Projects() {
-  const [activeCategory, setActiveCategory] = useState<CategoryType>('all');
-  const { setPose } = useAvatar();
+  const [selectedCategory, setSelectedCategory] = useState<ProjectCategory>('all');
+  const [viewMode, setViewMode] = useState<'editorial' | 'canvas'>('editorial');
+  const [hoveredProject, setHoveredProject] = useState<Project | null>(null);
+  const [activeModalProject, setActiveModalProject] = useState<Project | null>(null);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
+  const listRef = useRef<HTMLDivElement>(null);
 
-  const projects: Project[] = [
-    {
-      id: 'mockwin',
-      title: 'MockWin',
-      category: 'product',
-      categoryLabel: 'Product UI · Recruitment',
-      year: '2024',
-      description:
-        'End-to-end recruitment and candidate assessment product experience with high-fidelity test simulations, role benchmarking, and real-time candidate scorecards.',
-      tags: ['React.js', 'Next.js', 'Tailwind CSS', 'REST API'],
-      colSpan: 'md:col-span-7',
-      pose: 'coding',
-      poseMessage: 'Inspecting MockWin assessment engine UI architecture',
-      footerLabel: 'View Architecture & Case Study',
-      actionText: 'Demo / Inquire',
-      actionHref: '#contact',
-      preview: (
-        <div className="w-full bg-surface rounded-xl border border-border shadow-sm overflow-hidden transform group-hover:scale-[1.02] group-hover:border-accent group-hover:shadow-theme-glow transition-all duration-500">
-          {/* Simulated Browser Bar with Jewel Controls */}
-          <div className="bg-bg px-3.5 py-2.5 border-b border-border flex items-center justify-between">
-            <div className="flex items-center gap-1.5">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F56] border border-[#E0443E]/60 inline-block"></span>
-              <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E] border border-[#DEA123]/60 inline-block"></span>
-              <span className="w-2.5 h-2.5 rounded-full bg-[#27C93F] border border-[#1AAB29]/60 inline-block"></span>
-            </div>
-            <div className="flex items-center gap-1.5 bg-surface border border-border px-2.5 py-0.5 rounded text-[10px] font-mono text-ink-muted shadow-2xs">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse-dot"></span>
-              <span>mockwin.app/candidate/live-assessment</span>
-            </div>
-            <div className="w-8"></div>
-          </div>
+  // Smooth lerp pointer physics for floating preview canvas on desktop
+  useEffect(() => {
+    let animationFrameId: number;
+    const lerp = (start: number, end: number, factor: number) => start + (end - start) * factor;
 
-          {/* Project Screenshot Visual with Theme Overlay */}
-          <div className="relative h-44 sm:h-52 w-full overflow-hidden bg-bg">
-            <img
-              src="/projects/mockwin.jpg"
-              alt="MockWin recruitment candidate assessment engine interface"
-              className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/20 to-transparent"></div>
-            <div className="absolute top-3 right-3 inline-flex items-center gap-1 text-[11px] font-mono text-emerald-800 bg-surface/95 border border-emerald-200 px-2.5 py-0.5 rounded font-semibold shadow-2xs backdrop-blur-md">
-              <CheckCircle2 className="w-3 h-3 text-emerald-600" />
-              <span>Score: 94/100</span>
-            </div>
-          </div>
+    const updateCursor = () => {
+      setCursorPos((prev) => ({
+        x: lerp(prev.x, mousePos.x, 0.15),
+        y: lerp(prev.y, mousePos.y, 0.15),
+      }));
+      animationFrameId = requestAnimationFrame(updateCursor);
+    };
 
-          <div className="p-4 space-y-3 bg-surface border-t border-border/40">
-            <div className="grid grid-cols-3 gap-2.5 text-[10px] font-mono">
-              <div className="bg-bg p-2.5 rounded border border-border/60 hover:border-accent transition-colors">
-                <div className="flex items-center gap-1 text-ink-muted mb-0.5">
-                  <Zap className="w-3 h-3 text-amber-600 animate-pulse-dot" />
-                  <span>React Speed</span>
-                </div>
-                <strong className="text-ink text-xs block">98ms avg</strong>
-              </div>
+    animationFrameId = requestAnimationFrame(updateCursor);
+    return () => cancelAnimationFrame(animationFrameId);
+  }, [mousePos]);
 
-              <div className="bg-bg p-2.5 rounded border border-border/60 hover:border-accent transition-colors">
-                <div className="flex items-center gap-1 text-ink-muted mb-0.5">
-                  <ShieldCheck className="w-3 h-3 text-emerald-600" />
-                  <span>Accessibility</span>
-                </div>
-                <strong className="text-ink text-xs block">AA Compliant</strong>
-              </div>
-
-              <div className="bg-bg p-2.5 rounded border border-border/60 hover:border-accent transition-colors">
-                <div className="flex items-center gap-1 text-ink-muted mb-0.5">
-                  <CheckCircle2 className="w-3 h-3 text-blue-600" />
-                  <span>State Precision</span>
-                </div>
-                <strong className="text-ink text-xs block">Zero leaks</strong>
-              </div>
-            </div>
-          </div>
-        </div>
-      ),
-    },
-    {
-      id: 'ecom-rkv',
-      title: 'Ecom-RKV',
-      category: 'webapp',
-      categoryLabel: 'Web App · MERN',
-      year: '2023',
-      description:
-        'Production-grade full-stack MERN e-commerce application featuring authenticated workflows, dynamic product filtering, cart persistence, and Stripe checkout integration.',
-      tags: ['React.js', 'Node / Express', 'MongoDB'],
-      colSpan: 'md:col-span-5',
-      pose: 'coding',
-      poseMessage: 'Checking Ecom-RKV fullstack cart state and API logic',
-      footerLabel: 'Fullstack Repository',
-      actionText: 'GitHub Source',
-      actionHref: 'https://github.com',
-      preview: (
-        <div className="w-full bg-surface rounded-xl border border-border shadow-sm overflow-hidden transform group-hover:scale-[1.02] group-hover:border-accent group-hover:shadow-theme-glow transition-all duration-500">
-          {/* Project Screenshot Visual with Theme Overlay */}
-          <div className="relative h-44 sm:h-52 w-full overflow-hidden bg-bg">
-            <img
-              src="/projects/ecom_rkv.jpg"
-              alt="Ecom-RKV full-stack storefront interface"
-              className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/30 to-transparent"></div>
-            <div className="absolute top-3 left-3 flex items-center gap-2 bg-surface/90 border border-border px-2.5 py-1 rounded-full backdrop-blur-md shadow-2xs">
-              <div className="w-5 h-5 rounded bg-accent/10 border border-accent/20 flex items-center justify-center text-accent">
-                <ShoppingCart className="w-3 h-3" />
-              </div>
-              <span className="text-[11px] font-mono text-ink font-medium">Cart: 3 Items</span>
-            </div>
-            <span className="absolute top-3 right-3 text-xs font-bold text-accent font-mono bg-surface/90 px-2.5 py-1 rounded-full border border-border backdrop-blur-md shadow-2xs">
-              $184.50
-            </span>
-          </div>
-
-          <div className="p-4 bg-surface space-y-2 border-t border-border/40">
-            <div className="flex justify-between text-[10px] font-mono text-ink-muted">
-              <span>Checkout Flow Progress</span>
-              <span className="text-emerald-700 font-semibold">85% Complete</span>
-            </div>
-            <div className="h-1.5 w-full bg-bg rounded-full overflow-hidden border border-border/50">
-              <div className="h-full bg-accent stripe-animated rounded-full w-4/5"></div>
-            </div>
-
-            <div className="text-[11px] font-mono text-ink-muted flex items-center justify-between pt-1">
-              <span className="inline-flex items-center gap-1">
-                <CreditCard className="w-3 h-3 text-accent" />
-                <span>Stripe 3DS: Active</span>
-              </span>
-              <span className="inline-flex items-center gap-1 text-emerald-700 font-medium">
-                <ShieldCheck className="w-3 h-3" />
-                <span>Optimized Flow</span>
-              </span>
-            </div>
-          </div>
-        </div>
-      ),
-    },
-    {
-      id: 'mirror-news',
-      title: 'Mirror News',
-      category: 'mobile',
-      categoryLabel: 'Mobile · Android',
-      year: '2023',
-      description:
-        'Native Android news aggregation application delivering categorized global news feeds with offline cache management, push notifications, and customizable bookmarks.',
-      tags: ['Java', 'XML Layouts', 'NewsAPI', 'Firebase'],
-      colSpan: 'md:col-span-6',
-      pose: 'thinking',
-      poseMessage: 'Reviewing Mirror News asynchronous feeds and offline caching',
-      footerLabel: 'Native Mobile Architecture',
-      actionText: 'Repository',
-      actionHref: 'https://github.com',
-      preview: (
-        <div className="w-full bg-surface rounded-xl border border-border shadow-sm overflow-hidden transform group-hover:scale-[1.01] group-hover:border-accent group-hover:shadow-theme-glow transition-all duration-500">
-          <div className="relative h-44 sm:h-52 w-full overflow-hidden bg-bg">
-            <img
-              src="/projects/mirror_news.jpg"
-              alt="Mirror News Android mobile news application"
-              className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/30 to-transparent"></div>
-            <div className="absolute top-3 left-3 flex items-center gap-1.5 bg-surface/90 border border-border px-2.5 py-1 rounded-full backdrop-blur-md shadow-2xs">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-rose-600"></span>
-              </span>
-              <span className="text-[10px] font-mono text-rose-700 font-semibold uppercase tracking-wider">
-                Live Newsfeed
-              </span>
-            </div>
-            <div className="absolute top-3 right-3 flex items-center gap-1 text-[10px] font-mono text-ink bg-surface/90 px-2 py-1 rounded border border-border backdrop-blur-md">
-              <Wifi className="w-3 h-3 text-ink" />
-              <span>9:41</span>
-            </div>
-          </div>
-
-          <div className="p-3.5 bg-surface text-[10px] font-mono text-ink-muted flex items-center justify-between border-t border-border/40">
-            <span className="flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse-dot"></span>
-              <span>Android Client · NewsAPI Live</span>
-            </span>
-            <span className="text-accent font-medium">Offline SQLite Cache</span>
-          </div>
-        </div>
-      ),
-    },
-    {
-      id: 'raraa',
-      title: 'Raraa E-commerce',
-      category: 'webapp',
-      categoryLabel: 'Web App · UI Boutique',
-      year: '2022',
-      description:
-        'Lightweight, fast-loading apparel boutique storefront with custom CSS grid layouts, dynamic filtering, vanilla JavaScript cart state, and responsive checkout drawer.',
-      tags: ['HTML5 Semantic', 'Modern CSS', 'Vanilla JS'],
-      colSpan: 'md:col-span-6',
-      pose: 'greeting',
-      poseMessage: 'Exploring Raraa responsive boutique store layout',
-      footerLabel: 'Frontend Performance Showcase',
-      actionText: 'Live Demo',
-      actionHref: 'https://github.com',
-      preview: (
-        <div className="w-full bg-surface rounded-xl border border-border shadow-sm overflow-hidden transform group-hover:scale-[1.01] group-hover:border-accent group-hover:shadow-theme-glow transition-all duration-500">
-          <div className="relative h-44 sm:h-52 w-full overflow-hidden bg-bg">
-            <img
-              src="/projects/canvas_studio.jpg"
-              alt="Raraa Boutique apparel lookbook storefront"
-              className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/30 to-transparent"></div>
-            <div className="absolute top-3 left-3 flex items-center gap-1.5 bg-surface/90 border border-border px-2.5 py-1 rounded-full backdrop-blur-md shadow-2xs">
-              <ShoppingBag className="w-3.5 h-3.5 text-accent" />
-              <span className="text-[10px] font-mono text-ink font-medium">Boutique Lookbook Catalog</span>
-            </div>
-            <span className="absolute top-3 right-3 inline-flex items-center gap-1 text-accent text-[11px] font-mono font-semibold bg-surface/90 px-2 py-0.5 rounded border border-border backdrop-blur-md shadow-2xs">
-              <Sparkles className="w-3 h-3 text-accent animate-pulse-dot" />
-              <span>100% Native DOM</span>
-            </span>
-          </div>
-
-          <div className="p-3 bg-surface grid grid-cols-3 gap-2 text-[10px] font-mono text-ink-muted border-t border-border/40">
-            <div className="bg-bg p-1.5 rounded border border-border/40 text-center hover:border-accent transition-colors">
-              0 Layout Shifts
-            </div>
-            <div className="bg-bg p-1.5 rounded border border-border/40 text-center hover:border-accent transition-colors">
-              Vanilla State
-            </div>
-            <div className="bg-bg p-1.5 rounded border border-border/40 text-center hover:border-accent transition-colors">
-              100 Lighthouse
-            </div>
-          </div>
-        </div>
-      ),
-    },
-  ];
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (listRef.current) {
+      const rect = listRef.current.getBoundingClientRect();
+      setMousePos({
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top,
+      });
+    }
+  };
 
   const filteredProjects =
-    activeCategory === 'all'
-      ? projects
-      : projects.filter((project) => project.category === activeCategory);
+    selectedCategory === 'all'
+      ? PROJECTS
+      : PROJECTS.filter((p) => p.category === selectedCategory);
 
   return (
-    <section id="work" className="py-20 md:py-28 max-w-6xl mx-auto px-6 md:px-10">
+    <section id="work" className="py-24 md:py-32 max-w-6xl mx-auto px-6 md:px-10 relative">
+      {/* Editorial Section Header */}
       <ScrollReveal>
-        {/* Section Header with Editorial Counter */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 pb-6 border-b border-border">
           <div>
             <div className="flex items-center gap-2 font-mono text-xs text-accent uppercase tracking-widest mb-2">
-              <span>01 / Portfolio</span>
-              <span className="w-6 h-px bg-accent"></span>
+              <span>01 / Selected Works</span>
+              <span className="w-8 h-px bg-accent"></span>
             </div>
-            <h2 className="clamp-section font-serif font-normal text-ink">Selected work.</h2>
+            <h2 className="clamp-section font-serif font-normal text-ink tracking-tight">
+              Selected Projects.
+            </h2>
           </div>
 
-          {/* Category Filter Tabs with Micro-Interactions */}
-          <div className="mt-6 md:mt-0 flex flex-wrap gap-2 font-mono text-xs">
-            <button
-              type="button"
-              onClick={() => setActiveCategory('all')}
-              className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded border transition-all duration-300 cursor-pointer shadow-2xs active:scale-95 ${
-                activeCategory === 'all'
-                  ? 'border-ink bg-ink text-surface font-medium shadow-accent-glow'
-                  : 'border-border bg-surface text-ink-muted hover:text-ink hover:border-ink hover:bg-bg-alt/30'
-              }`}
-            >
-              <Layers className="w-3.5 h-3.5" />
-              <span>All (4)</span>
-            </button>
-            <button
-              type="button"
-              onClick={() => setActiveCategory('webapp')}
-              className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded border transition-all duration-300 cursor-pointer shadow-2xs active:scale-95 ${
-                activeCategory === 'webapp'
-                  ? 'border-ink bg-ink text-surface font-medium shadow-accent-glow'
-                  : 'border-border bg-surface text-ink-muted hover:text-ink hover:border-ink hover:bg-bg-alt/30'
-              }`}
-            >
-              <Globe className="w-3.5 h-3.5" />
-              <span>Web apps</span>
-            </button>
-            <button
-              type="button"
-              onClick={() => setActiveCategory('product')}
-              className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded border transition-all duration-300 cursor-pointer shadow-2xs active:scale-95 ${
-                activeCategory === 'product'
-                  ? 'border-ink bg-ink text-surface font-medium shadow-accent-glow'
-                  : 'border-border bg-surface text-ink-muted hover:text-ink hover:border-ink hover:bg-bg-alt/30'
-              }`}
-            >
-              <Layout className="w-3.5 h-3.5" />
-              <span>Product UI</span>
-            </button>
-            <button
-              type="button"
-              onClick={() => setActiveCategory('mobile')}
-              className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded border transition-all duration-300 cursor-pointer shadow-2xs active:scale-95 ${
-                activeCategory === 'mobile'
-                  ? 'border-ink bg-ink text-surface font-medium shadow-accent-glow'
-                  : 'border-border bg-surface text-ink-muted hover:text-ink hover:border-ink hover:bg-bg-alt/30'
-              }`}
-            >
-              <Smartphone className="w-3.5 h-3.5" />
-              <span>Mobile</span>
-            </button>
+          <div className="flex flex-wrap items-center gap-4 mt-4 md:mt-0">
+            {/* View Mode Toggle: Minimal Editorial List vs Visual Canvas */}
+            <div className="inline-flex items-center p-1 rounded-lg bg-surface border border-border text-xs font-mono shadow-2xs">
+              <button
+                type="button"
+                onClick={() => setViewMode('editorial')}
+                className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-md transition-all cursor-pointer ${
+                  viewMode === 'editorial'
+                    ? 'bg-ink text-surface font-semibold shadow-xs'
+                    : 'text-ink-muted hover:text-ink'
+                }`}
+              >
+                <LayoutList className="w-3.5 h-3.5" />
+                <span>Editorial Index</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setViewMode('canvas')}
+                className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-md transition-all cursor-pointer ${
+                  viewMode === 'canvas'
+                    ? 'bg-ink text-surface font-semibold shadow-xs'
+                    : 'text-ink-muted hover:text-ink'
+                }`}
+              >
+                <LayoutGrid className="w-3.5 h-3.5" />
+                <span>Visual Canvas</span>
+              </button>
+            </div>
           </div>
         </div>
       </ScrollReveal>
 
-      {/* Editorial Project Gallery Grid with Staggered ScrollReveal & Lift Physics */}
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10">
-        {filteredProjects.map((project, index) => (
-          <ScrollReveal
-            key={project.id}
-            delayMs={index * 120}
-            className={`${project.colSpan} flex`}
-          >
-            <article
-              onClick={() => setPose(project.pose, project.poseMessage)}
-              className="card-hover-lift w-full bg-surface border border-border rounded-xl overflow-hidden group flex flex-col justify-between cursor-pointer"
+      {/* Category Filter Pills */}
+      <ScrollReveal delayMs={60}>
+        <div className="flex flex-wrap items-center gap-2 mb-10 pb-2">
+          {(
+            [
+              { id: 'all', label: 'All Projects' },
+              { id: 'product', label: 'Product UI' },
+              { id: 'webapp', label: 'Web Applications' },
+              { id: 'mobile', label: 'Mobile Android' },
+            ] as const
+          ).map((cat) => (
+            <button
+              key={cat.id}
+              type="button"
+              onClick={() => setSelectedCategory(cat.id)}
+              className={`px-3.5 py-1.5 rounded-full font-mono text-xs transition-all duration-200 cursor-pointer ${
+                selectedCategory === cat.id
+                  ? 'bg-accent text-surface font-medium shadow-2xs'
+                  : 'bg-surface/80 border border-border text-ink-muted hover:text-ink hover:border-accent'
+              }`}
             >
-              <div className="p-6 md:p-8">
-                <div className="flex items-center justify-between text-xs font-mono text-ink-muted mb-3">
-                  <span className="uppercase tracking-wider text-accent font-semibold">{project.categoryLabel}</span>
-                  <span className="text-ink-faint">{project.year}</span>
+              {cat.label}
+            </button>
+          ))}
+        </div>
+      </ScrollReveal>
+
+      {/* =====================================================================
+          VIEW MODE 1: MINIMAL EDITORIAL INDEX (aarya.wtf inspired)
+          Typography-driven list with interactive cursor-following preview canvas
+          ===================================================================== */}
+      {viewMode === 'editorial' ? (
+        <div
+          ref={listRef}
+          onMouseMove={handleMouseMove}
+          onMouseLeave={() => setHoveredProject(null)}
+          className="relative divide-y divide-border border-y border-border"
+        >
+          {/* Floating Pointer-Following Preview Canvas (Desktop only) */}
+          {hoveredProject && (
+            <div
+              className="hidden lg:block pointer-events-none fixed z-40 w-80 h-52 rounded-xl overflow-hidden border border-border shadow-2xl transition-opacity duration-300"
+              style={{
+                top: `${cursorPos.y}px`,
+                left: `${cursorPos.x + 36}px`,
+                transform: 'translate3d(0, -50%, 0)',
+                boxShadow: '0 20px 50px -10px var(--theme-glow)',
+              }}
+            >
+              <div className="relative w-full h-full bg-surface">
+                <img
+                  src={hoveredProject.image}
+                  alt={hoveredProject.title}
+                  className="w-full h-full object-cover object-top transition-transform duration-500 scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                <div className="absolute bottom-3 left-3 right-3 text-white">
+                  <span className="font-mono text-[10px] uppercase text-accent-light tracking-wider block">
+                    {hoveredProject.categoryLabel}
+                  </span>
+                  <span className="font-serif text-lg leading-tight block">
+                    {hoveredProject.title}
+                  </span>
                 </div>
-                <h3 className="text-2xl md:text-3xl font-serif text-ink mb-2 group-hover:text-accent transition-colors flex items-center justify-between">
-                  <span>{project.title}</span>
-                  <div className="w-7 h-7 rounded-full bg-bg border border-border flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-surface transition-all shadow-2xs">
-                    <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </div>
+            </div>
+          )}
+
+          {filteredProjects.map((project, idx) => (
+            <div
+              key={project.id}
+              onMouseEnter={() => setHoveredProject(project)}
+              onClick={() => setActiveModalProject(project)}
+              className="group py-7 sm:py-8 px-2 sm:px-4 flex flex-col md:flex-row md:items-center justify-between gap-4 transition-all duration-300 hover:bg-bg-alt/30 cursor-pointer"
+            >
+              {/* Left: Index & Large Typography Title */}
+              <div className="flex items-baseline gap-4 sm:gap-6">
+                <span className="font-mono text-xs text-accent font-semibold shrink-0">
+                  0{idx + 1}
+                </span>
+
+                <div>
+                  <div className="flex items-center gap-3">
+                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-serif text-ink tracking-tight group-hover:text-accent transition-colors">
+                      {project.title}
+                    </h3>
+                    <span className="hidden sm:inline-flex items-center gap-1 text-[11px] font-mono px-2 py-0.5 rounded bg-bg border border-border text-ink-muted">
+                      {project.year}
+                    </span>
                   </div>
-                </h3>
-                <p className="text-ink-muted text-sm leading-relaxed mb-4">{project.description}</p>
-                <div className="flex flex-wrap gap-2 text-xs font-mono text-ink-muted mb-6">
-                  {project.tags.map((tag) => (
+
+                  <p className="text-xs sm:text-sm text-ink-muted mt-1 max-w-xl line-clamp-1 group-hover:text-ink transition-colors">
+                    {project.subtitle}
+                  </p>
+                </div>
+              </div>
+
+              {/* Right: Category, Tech Stack & Action Arrow */}
+              <div className="flex items-center justify-between md:justify-end gap-4 sm:gap-6 pt-2 md:pt-0">
+                <div className="hidden sm:flex flex-wrap items-center gap-1.5 font-mono text-[11px] text-ink-muted">
+                  {project.tags.slice(0, 3).map((tag) => (
                     <span
                       key={tag}
-                      className="bg-bg px-2.5 py-1 rounded border border-border text-ink group-hover:border-border/80 transition-colors"
+                      className="px-2 py-0.5 rounded bg-bg/80 border border-border/70"
                     >
                       {tag}
                     </span>
                   ))}
+                  {project.tags.length > 3 && (
+                    <span className="text-ink-faint">+{project.tags.length - 3}</span>
+                  )}
+                </div>
+
+                <div className="flex items-center gap-2 text-xs font-mono text-ink-muted group-hover:text-accent transition-colors">
+                  <span className="hidden sm:inline">View Case Study</span>
+                  <div className="w-8 h-8 rounded-full border border-border bg-surface flex items-center justify-center text-ink group-hover:border-accent group-hover:bg-accent group-hover:text-surface transition-all duration-300 group-hover:translate-x-1">
+                    <ArrowUpRight className="w-4 h-4" />
+                  </div>
                 </div>
               </div>
+            </div>
+          ))}
+        </div>
+      ) : (
+        /* =====================================================================
+           VIEW MODE 2: VISUAL CANVAS SHOWCASE
+           High-definition cards with simulated browser chome and live metric pills
+           ===================================================================== */
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {filteredProjects.map((project, idx) => (
+            <ScrollReveal key={project.id} delayMs={idx * 80}>
+              <div
+                onClick={() => setActiveModalProject(project)}
+                className="card-hover-lift h-full flex flex-col justify-between bg-surface border border-border rounded-2xl overflow-hidden shadow-sm group hover:border-accent hover:shadow-theme-glow transition-all duration-500 cursor-pointer"
+              >
+                {/* Visual Image Header with Ambient Theme Overlay */}
+                <div className="relative h-56 sm:h-64 w-full overflow-hidden bg-bg">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/20 to-transparent" />
 
-              {/* Graphic Container */}
-              <div className="bg-bg-alt/40 border-t border-border p-6 md:p-8 flex items-center justify-center overflow-hidden">
-                {project.preview}
-              </div>
+                  {/* Top Badges */}
+                  <div className="absolute top-3 left-3 flex items-center gap-2">
+                    <span className="px-2.5 py-1 rounded-full text-[10px] font-mono font-medium bg-surface/90 border border-border text-ink backdrop-blur-md shadow-2xs">
+                      {project.categoryLabel}
+                    </span>
+                  </div>
 
-              <div className="px-6 py-3.5 bg-surface border-t border-border flex justify-between items-center text-xs font-mono">
-                <span className="text-ink-muted">{project.footerLabel}</span>
-                <a
-                  href={project.actionHref}
-                  onClick={(e) => e.stopPropagation()}
-                  target={project.actionHref.startsWith('http') ? '_blank' : undefined}
-                  rel={project.actionHref.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  className="inline-flex items-center gap-1.5 text-accent hover:text-accent-light font-semibold transition-colors group-hover:underline"
-                >
-                  <span>{project.actionText}</span>
-                  <ExternalLink className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
-                </a>
+                  <div className="absolute top-3 right-3 font-mono text-[10px] px-2.5 py-1 rounded-full bg-surface/90 border border-border text-ink backdrop-blur-md shadow-2xs">
+                    {project.year}
+                  </div>
+                </div>
+
+                {/* Card Content */}
+                <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
+                  <div>
+                    <div className="flex items-center justify-between">
+                      <h3 className="font-serif text-2xl text-ink group-hover:text-accent transition-colors">
+                        {project.title}
+                      </h3>
+                      <ArrowUpRight className="w-4 h-4 text-ink-muted group-hover:text-accent group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                    </div>
+                    <p className="text-xs text-ink-muted mt-2 leading-relaxed">
+                      {project.description}
+                    </p>
+                  </div>
+
+                  {/* Verified Metrics Pills */}
+                  {project.metrics && (
+                    <div className="grid grid-cols-3 gap-2 pt-2 border-t border-border/60 text-[10px] font-mono">
+                      {project.metrics.map((m) => (
+                        <div
+                          key={m.label}
+                          className="p-2 rounded bg-bg border border-border/50 text-center"
+                        >
+                          <span className="text-ink-muted block text-[9px]">{m.label}</span>
+                          <strong className="text-ink block">{m.value}</strong>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Tags & Action */}
+                  <div className="pt-2 flex items-center justify-between border-t border-border/40 text-xs font-mono">
+                    <div className="flex flex-wrap gap-1.5">
+                      {project.tags.slice(0, 3).map((tag) => (
+                        <span
+                          key={tag}
+                          className="text-[10px] px-2 py-0.5 rounded bg-bg-alt/50 border border-border text-ink-muted"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <span className="text-accent font-medium flex items-center gap-0.5">
+                      Details <span>&rsaquo;</span>
+                    </span>
+                  </div>
+                </div>
               </div>
-            </article>
-          </ScrollReveal>
-        ))}
-      </div>
+            </ScrollReveal>
+          ))}
+        </div>
+      )}
+
+      {/* Case Study Modal */}
+      <ProjectModal
+        project={activeModalProject}
+        onClose={() => setActiveModalProject(null)}
+      />
     </section>
   );
 }
