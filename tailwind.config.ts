@@ -9,16 +9,16 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        bg: '#FAF7F0',
-        'bg-alt': '#F0E4D1',
-        surface: '#FFFFFF',
-        accent: '#B98550',
-        'accent-light': '#DFBE99',
-        border: '#E7E0D5',
-        'border-subtle': '#EDE7DC',
-        ink: '#292B28',
-        'ink-muted': '#686B66',
-        'ink-faint': '#989B95',
+        bg: 'var(--color-bg)',
+        'bg-alt': 'var(--color-bg-alt)',
+        surface: 'var(--color-surface)',
+        accent: 'var(--color-accent)',
+        'accent-light': 'var(--color-accent-light)',
+        border: 'var(--color-border)',
+        'border-subtle': 'var(--color-border-subtle)',
+        ink: 'var(--color-ink)',
+        'ink-muted': 'var(--color-ink-muted)',
+        'ink-faint': 'var(--color-ink-faint)',
       },
       fontFamily: {
         serif: ['"Instrument Serif"', 'Georgia', 'serif'],
@@ -27,8 +27,8 @@ const config: Config = {
       },
       boxShadow: {
         '2xs': '0 1px 2px rgba(41, 43, 40, 0.05)',
-        'accent-glow': '0 12px 30px -8px rgba(185, 133, 80, 0.22)',
-        'lift': '0 18px 36px -10px rgba(41, 43, 40, 0.08), 0 0 1px rgba(41, 43, 40, 0.1)',
+        'accent-glow': '0 12px 30px -8px var(--color-accent-light)',
+        'lift': '0 18px 36px -10px rgba(41, 43, 40, 0.12), 0 0 1px var(--color-border)',
       },
       keyframes: {
         subtleFloat: {

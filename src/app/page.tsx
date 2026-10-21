@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { ThemeProvider } from '@/context/ThemeContext';
 import { AvatarProvider } from '@/context/AvatarContext';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
@@ -13,24 +14,26 @@ import Footer from '@/components/Footer';
 
 export default function Home() {
   return (
-    <AvatarProvider>
-      <div className="min-h-screen flex flex-col bg-bg text-ink selection:bg-accent/20 selection:text-ink">
-        {/* Sticky 72px Navbar */}
-        <Navbar />
+    <ThemeProvider>
+      <AvatarProvider>
+        <div className="min-h-screen flex flex-col bg-bg text-ink selection:bg-accent/20 selection:text-ink">
+          {/* Sticky 72px Navbar */}
+          <Navbar />
 
-        {/* Main Content Sections adhering to provided HTML layout */}
-        <main className="flex-1">
-          <Hero />
-          <Projects />
-          <Experience />
-          <Expertise />
-          <About />
-          <Contact />
-        </main>
+          {/* Main Content Sections adhering to provided HTML layout */}
+          <main className="flex-1">
+            <Hero />
+            <Projects />
+            <Experience />
+            <Expertise />
+            <About />
+            <Contact />
+          </main>
 
-        {/* Minimal Editorial Footer */}
-        <Footer />
-      </div>
-    </AvatarProvider>
+          {/* Minimal Editorial Footer */}
+          <Footer />
+        </div>
+      </AvatarProvider>
+    </ThemeProvider>
   );
 }

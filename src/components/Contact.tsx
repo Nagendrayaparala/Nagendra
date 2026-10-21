@@ -25,7 +25,7 @@ export default function Contact() {
   return (
     <section id="contact" className="py-20 md:py-28 max-w-6xl mx-auto px-6 md:px-10">
       <ScrollReveal>
-        <div className="bg-white border border-border rounded-2xl p-8 md:p-14 shadow-sm relative overflow-hidden card-hover-lift">
+        <div className="bg-surface border border-border rounded-2xl p-8 md:p-14 shadow-sm relative overflow-hidden card-hover-lift">
           {/* Subtle top animated gradient decorative bar */}
           <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-accent via-accent-light to-accent bg-[length:200%_100%] animate-gradient"></div>
 
@@ -90,7 +90,7 @@ export default function Contact() {
                 <button
                   type="button"
                   onClick={handleDownloadCV}
-                  className="btn-shimmer px-4 py-3.5 bg-ink hover:bg-black text-white rounded-lg transition-all duration-300 flex items-center gap-2.5 cursor-pointer shadow-2xs hover:shadow-md active:scale-95 group"
+                  className="btn-shimmer px-4 py-3.5 bg-ink hover:opacity-90 text-surface rounded-lg transition-all duration-300 flex items-center gap-2.5 cursor-pointer shadow-2xs hover:shadow-md active:scale-95 group"
                 >
                   <div className="w-5 h-5 rounded bg-white/10 flex items-center justify-center text-accent-light transition-transform duration-300 group-hover:scale-110">
                     <FileDown className="w-3.5 h-3.5" />

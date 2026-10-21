@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useAvatar } from '@/context/AvatarContext';
+import ThemeSwitcher from './ThemeSwitcher';
 import { FileText, Menu, X, ArrowUpRight } from 'lucide-react';
 
 export default function Navbar() {
@@ -39,7 +40,7 @@ export default function Navbar() {
       <div className="max-w-6xl w-full mx-auto px-6 md:px-10 flex items-center justify-between">
         {/* Wordmark with Subtle Scale Physics */}
         <a href="#hero" className="group flex items-center gap-2.5 tracking-tight active:scale-95 transition-transform">
-          <div className="w-8 h-8 rounded bg-ink text-white flex items-center justify-center font-mono font-bold text-xs group-hover:bg-accent transition-colors shadow-2xs">
+          <div className="w-8 h-8 rounded bg-ink text-surface flex items-center justify-center font-mono font-bold text-xs group-hover:bg-accent transition-colors shadow-2xs">
             YN
           </div>
           <span className="font-sans font-bold text-lg tracking-wider text-ink group-hover:text-accent transition-colors">
@@ -84,9 +85,12 @@ export default function Navbar() {
           </a>
         </nav>
 
-        {/* Right Meta Status & Resume */}
-        <div className="flex items-center gap-4">
-          <div className="hidden sm:flex items-center gap-2.5 bg-white/80 border border-border px-3 py-1.5 rounded-full text-xs font-mono text-ink-muted shadow-2xs hover:border-accent/40 transition-colors">
+        {/* Right Meta Status, Palette Toggle & Resume */}
+        <div className="flex items-center gap-3 sm:gap-4">
+          {/* Top Design Color Palette Switcher */}
+          <ThemeSwitcher />
+
+          <div className="hidden lg:flex items-center gap-2.5 bg-surface/80 border border-border px-3 py-1.5 rounded-full text-xs font-mono text-ink-muted shadow-2xs hover:border-accent/40 transition-colors">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span>
@@ -97,9 +101,9 @@ export default function Navbar() {
           <a
             href="#contact"
             onClick={handleResumeClick}
-            className="btn-shimmer inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider font-medium px-4 py-2 bg-ink text-white hover:bg-accent transition-all duration-300 rounded shadow-2xs active:scale-95 group"
+            className="btn-shimmer inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider font-medium px-4 py-2 bg-ink text-surface hover:bg-accent transition-all duration-300 rounded shadow-2xs active:scale-95 group"
           >
-            <FileText className="w-3.5 h-3.5 text-accent-light group-hover:text-white transition-colors" />
+            <FileText className="w-3.5 h-3.5 text-accent-light group-hover:text-surface transition-colors" />
             <span>Resume</span>
           </a>
 
@@ -107,7 +111,7 @@ export default function Navbar() {
           <button
             onClick={toggleMobileMenu}
             aria-label="Toggle Navigation Menu"
-            className="md:hidden w-9 h-9 rounded-md border border-border bg-white flex items-center justify-center text-ink hover:text-accent hover:border-accent transition-all active:scale-90 cursor-pointer"
+            className="md:hidden w-9 h-9 rounded-md border border-border bg-surface flex items-center justify-center text-ink hover:text-accent hover:border-accent transition-all active:scale-90 cursor-pointer"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
@@ -117,12 +121,14 @@ export default function Navbar() {
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
         <div className="md:hidden absolute top-[72px] left-0 w-full bg-bg border-b border-border p-6 shadow-xl flex flex-col space-y-4 font-medium text-sm animate-fadeIn">
-          <div className="flex items-center gap-2 text-xs font-mono text-ink-muted pb-2 border-b border-border/50">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span>
-            </span>
-            <span>Open to Frontend roles</span>
+          <div className="flex items-center justify-between text-xs font-mono text-ink-muted pb-2 border-b border-border/50">
+            <div className="flex items-center gap-2">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span>
+              </span>
+              <span>Open to Frontend roles</span>
+            </div>
           </div>
           <a
             href="#work"

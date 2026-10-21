@@ -42,11 +42,11 @@ export default function Expertise() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* Group 1: Frontend */}
         <ScrollReveal delayMs={0} className="flex">
-          <div className="card-hover-lift w-full bg-white border border-border rounded-xl p-6 md:p-8 flex flex-col justify-between shadow-2xs group">
+          <div className="card-hover-lift w-full bg-surface border border-border rounded-xl p-6 md:p-8 flex flex-col justify-between shadow-2xs group">
             <div>
               <div className="flex items-center justify-between pb-3 mb-6 border-b border-border">
                 <div className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent shadow-2xs group-hover:bg-accent group-hover:text-white group-hover:rotate-6 transition-all duration-300">
+                  <div className="w-8 h-8 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent shadow-2xs group-hover:bg-accent group-hover:text-surface group-hover:rotate-6 transition-all duration-300">
                     <Layout className="w-4 h-4" />
                   </div>
                   <h3 className="font-serif text-2xl text-ink group-hover:text-accent transition-colors">Frontend</h3>
@@ -98,11 +98,11 @@ export default function Expertise() {
 
         {/* Group 2: Backend & Data */}
         <ScrollReveal delayMs={120} className="flex">
-          <div className="card-hover-lift w-full bg-white border border-border rounded-xl p-6 md:p-8 flex flex-col justify-between shadow-2xs group">
+          <div className="card-hover-lift w-full bg-surface border border-border rounded-xl p-6 md:p-8 flex flex-col justify-between shadow-2xs group">
             <div>
               <div className="flex items-center justify-between pb-3 mb-6 border-b border-border">
                 <div className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent shadow-2xs group-hover:bg-accent group-hover:text-white group-hover:rotate-6 transition-all duration-300">
+                  <div className="w-8 h-8 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent shadow-2xs group-hover:bg-accent group-hover:text-surface group-hover:rotate-6 transition-all duration-300">
                     <Server className="w-4 h-4" />
                   </div>
                   <h3 className="font-serif text-2xl text-ink group-hover:text-accent transition-colors">Backend &amp; Data</h3>
@@ -154,11 +154,11 @@ export default function Expertise() {
 
         {/* Group 3: Tools & Quality */}
         <ScrollReveal delayMs={240} className="flex">
-          <div className="card-hover-lift w-full bg-white border border-border rounded-xl p-6 md:p-8 flex flex-col justify-between shadow-2xs group">
+          <div className="card-hover-lift w-full bg-surface border border-border rounded-xl p-6 md:p-8 flex flex-col justify-between shadow-2xs group">
             <div>
               <div className="flex items-center justify-between pb-3 mb-6 border-b border-border">
                 <div className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent shadow-2xs group-hover:bg-accent group-hover:text-white group-hover:rotate-6 transition-all duration-300">
+                  <div className="w-8 h-8 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent shadow-2xs group-hover:bg-accent group-hover:text-surface group-hover:rotate-6 transition-all duration-300">
                     <Wrench className="w-4 h-4" />
                   </div>
                   <h3 className="font-serif text-2xl text-ink group-hover:text-accent transition-colors">Tools &amp; Quality</h3>

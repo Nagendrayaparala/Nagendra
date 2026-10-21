@@ -4,19 +4,198 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom Scrollbar and typography clamps */
+/* ==========================================================================
+   COLOR PALETTES (Forest, Cherry, Midnight Indigo, Plum, Orange, Ivory)
+   ========================================================================== */
+
+/* 1. Default: Warm Ivory & Caramel */
+:root,
+[data-theme="ivory"] {
+  --color-bg: #FAF7F0;
+  --color-bg-alt: #F0E4D1;
+  --color-surface: #FFFFFF;
+  --color-accent: #B98550;
+  --color-accent-light: #DFBE99;
+  --color-border: #E7E0D5;
+  --color-border-subtle: #EDE7DC;
+  --color-ink: #292B28;
+  --color-ink-muted: #686B66;
+  --color-ink-faint: #989B95;
+}
+
+[data-theme="ivory"][data-mode="dark"] {
+  --color-bg: #1C1E1B;
+  --color-bg-alt: #262924;
+  --color-surface: #242622;
+  --color-accent: #DFBE99;
+  --color-accent-light: #B98550;
+  --color-border: #383B34;
+  --color-border-subtle: #2D302A;
+  --color-ink: #FAF7F0;
+  --color-ink-muted: #B8BBB3;
+  --color-ink-faint: #7E817A;
+}
+
+/* 2. Forest & Leaf (#064734 & #E0FFC2) */
+[data-theme="forest"] {
+  --color-bg: #F0F9ED;
+  --color-bg-alt: #E0FFC2;
+  --color-surface: #FFFFFF;
+  --color-accent: #064734;
+  --color-accent-light: #186E53;
+  --color-border: #C8E6B8;
+  --color-border-subtle: #D8F0CC;
+  --color-ink: #064734;
+  --color-ink-muted: #1E5C47;
+  --color-ink-faint: #4E8773;
+}
+
+[data-theme="forest"][data-mode="dark"] {
+  --color-bg: #064734;
+  --color-bg-alt: #08553F;
+  --color-surface: #0A5D45;
+  --color-accent: #E0FFC2;
+  --color-accent-light: #B7F58A;
+  --color-border: #147255;
+  --color-border-subtle: #0E6248;
+  --color-ink: #E0FFC2;
+  --color-ink-muted: #BDE7A0;
+  --color-ink-faint: #81B868;
+}
+
+/* 3. Cherry & Alabaster (#890149 & #F3F3E7) */
+[data-theme="cherry"] {
+  --color-bg: #F3F3E7;
+  --color-bg-alt: #E8E8D8;
+  --color-surface: #FFFFFF;
+  --color-accent: #890149;
+  --color-accent-light: #BF1E72;
+  --color-border: #DDDDC9;
+  --color-border-subtle: #E8E8DA;
+  --color-ink: #2A091A;
+  --color-ink-muted: #672649;
+  --color-ink-faint: #965C7B;
+}
+
+[data-theme="cherry"][data-mode="dark"] {
+  --color-bg: #890149;
+  --color-bg-alt: #70003A;
+  --color-surface: #9E0B58;
+  --color-accent: #F3F3E7;
+  --color-accent-light: #FFFFFF;
+  --color-border: #A91864;
+  --color-border-subtle: #790342;
+  --color-ink: #F3F3E7;
+  --color-ink-muted: #E2E2D0;
+  --color-ink-faint: #B7B7A5;
+}
+
+/* 4. Midnight Indigo & Vanilla (#282B4A & #EEEBDA) */
+[data-theme="indigo"] {
+  --color-bg: #EEEBDA;
+  --color-bg-alt: #E3DFCB;
+  --color-surface: #FFFFFF;
+  --color-accent: #282B4A;
+  --color-accent-light: #4A4F7D;
+  --color-border: #D6D1BC;
+  --color-border-subtle: #E3DFC9;
+  --color-ink: #191B33;
+  --color-ink-muted: #474A6F;
+  --color-ink-faint: #767A9E;
+}
+
+[data-theme="indigo"][data-mode="dark"] {
+  --color-bg: #282B4A;
+  --color-bg-alt: #20223D;
+  --color-surface: #34385E;
+  --color-accent: #EEEBDA;
+  --color-accent-light: #FFFFFF;
+  --color-border: #434875;
+  --color-border-subtle: #33375C;
+  --color-ink: #EEEBDA;
+  --color-ink-muted: #D8D4BE;
+  --color-ink-faint: #AAA58E;
+}
+
+/* 5. Plum & Milk (#381932 & #FFF3E6) */
+[data-theme="plum"] {
+  --color-bg: #FFF3E6;
+  --color-bg-alt: #F7E2CF;
+  --color-surface: #FFFFFF;
+  --color-accent: #381932;
+  --color-accent-light: #6A3760;
+  --color-border: #EBD6C3;
+  --color-border-subtle: #F3E3D3;
+  --color-ink: #241021;
+  --color-ink-muted: #5B3A54;
+  --color-ink-faint: #8E6D88;
+}
+
+[data-theme="plum"][data-mode="dark"] {
+  --color-bg: #381932;
+  --color-bg-alt: #2A1225;
+  --color-surface: #492442;
+  --color-accent: #FFF3E6;
+  --color-accent-light: #FFD9B3;
+  --color-border: #593051;
+  --color-border-subtle: #45223E;
+  --color-ink: #FFF3E6;
+  --color-ink-muted: #EBD2BA;
+  --color-ink-faint: #B79B81;
+}
+
+/* 6. Orange & Milk (#EC5E27 & #FDFDF1) */
+[data-theme="orange"] {
+  --color-bg: #FDFDF1;
+  --color-bg-alt: #F4F4DB;
+  --color-surface: #FFFFFF;
+  --color-accent: #EC5E27;
+  --color-accent-light: #FF8757;
+  --color-border: #E8E8CC;
+  --color-border-subtle: #F0F0DB;
+  --color-ink: #252220;
+  --color-ink-muted: #67625D;
+  --color-ink-faint: #9A938D;
+}
+
+[data-theme="orange"][data-mode="dark"] {
+  --color-bg: #EC5E27;
+  --color-bg-alt: #D44D19;
+  --color-surface: #F86E38;
+  --color-accent: #FDFDF1;
+  --color-accent-light: #FFFFFF;
+  --color-border: #FF8657;
+  --color-border-subtle: #D64F1A;
+  --color-ink: #FDFDF1;
+  --color-ink-muted: #EDEEC8;
+  --color-ink-faint: #C8C99C;
+}
+
+/* ==========================================================================
+   GLOBAL TRANSITIONS & TYPOGRAPHY
+   ========================================================================== */
+
+/* Smooth color transitions when theme changes */
+*, *::before, *::after {
+  transition-property: background-color, border-color, color, fill, stroke, box-shadow;
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Custom Scrollbar */
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #FAF7F0; }
-::-webkit-scrollbar-thumb { background: #E7E0D5; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #B98550; }
+::-webkit-scrollbar-track { background: var(--color-bg); }
+::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-accent); }
 
 html {
   scroll-behavior: smooth;
+  background-color: var(--color-bg);
 }
 
 body {
-  background-color: #FAF7F0;
-  color: #292B28;
+  background-color: var(--color-bg);
+  color: var(--color-ink);
   font-family: 'Space Grotesk', sans-serif;
   overflow-x: hidden;
 }
@@ -35,19 +214,19 @@ body {
 .grid-bg-subtle {
   background-size: 32px 32px;
   background-image: 
-    linear-gradient(to right, rgba(231, 224, 213, 0.35) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(231, 224, 213, 0.35) 1px, transparent 1px);
+    linear-gradient(to right, rgba(185, 133, 80, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(185, 133, 80, 0.08) 1px, transparent 1px);
 }
 .editorial-border-bottom {
-  border-bottom: 1px solid #E7E0D5;
+  border-bottom: 1px solid var(--color-border);
 }
 .editorial-border-top {
-  border-top: 1px solid #E7E0D5;
+  border-top: 1px solid var(--color-border);
 }
 .nav-scrolled {
-  background-color: rgba(250, 247, 240, 0.94);
+  background-color: var(--color-bg);
   backdrop-filter: blur(12px);
-  box-shadow: 0 1px 0 rgba(231, 224, 213, 0.8), 0 4px 16px rgba(41, 43, 40, 0.02);
+  box-shadow: 0 1px 0 var(--color-border), 0 4px 16px rgba(41, 43, 40, 0.02);
 }
 
 /* Scroll reveal utility classes */
@@ -96,8 +275,8 @@ body {
 
 .card-hover-lift:hover {
   transform: translateY(-6px);
-  box-shadow: 0 16px 32px -10px rgba(185, 133, 80, 0.15), 0 0 1px rgba(185, 133, 80, 0.2);
-  border-color: #B98550;
+  box-shadow: 0 16px 32px -10px rgba(41, 43, 40, 0.15), 0 0 1px var(--color-accent);
+  border-color: var(--color-accent);
 }
 
 /* Animated progress stripes for Mockup */

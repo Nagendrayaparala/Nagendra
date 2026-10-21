@@ -62,7 +62,7 @@ export default function Projects() {
       actionText: 'Demo / Inquire',
       actionHref: '#contact',
       preview: (
-        <div className="w-full bg-white rounded-lg border border-border shadow-sm overflow-hidden transform group-hover:scale-[1.02] transition-transform duration-500">
+        <div className="w-full bg-surface rounded-lg border border-border shadow-sm overflow-hidden transform group-hover:scale-[1.02] transition-transform duration-500">
           {/* Simulated Browser Bar with Jewel Controls */}
           <div className="bg-bg px-3.5 py-2.5 border-b border-border flex items-center justify-between">
             <div className="flex items-center gap-1.5">
@@ -70,7 +70,7 @@ export default function Projects() {
               <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E] border border-[#DEA123]/60 inline-block"></span>
               <span className="w-2.5 h-2.5 rounded-full bg-[#27C93F] border border-[#1AAB29]/60 inline-block"></span>
             </div>
-            <div className="flex items-center gap-1.5 bg-white border border-border px-2.5 py-0.5 rounded text-[10px] font-mono text-ink-muted shadow-2xs">
+            <div className="flex items-center gap-1.5 bg-surface border border-border px-2.5 py-0.5 rounded text-[10px] font-mono text-ink-muted shadow-2xs">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse-dot"></span>
               <span>mockwin.app/candidate/live-assessment</span>
             </div>
@@ -134,7 +134,7 @@ export default function Projects() {
       actionText: 'GitHub Source',
       actionHref: 'https://github.com',
       preview: (
-        <div className="w-full bg-white rounded-lg border border-border p-4 shadow-sm space-y-3 transform group-hover:scale-[1.02] transition-transform duration-500">
+        <div className="w-full bg-surface rounded-lg border border-border p-4 shadow-sm space-y-3 transform group-hover:scale-[1.02] transition-transform duration-500">
           <div className="flex items-center justify-between pb-2 border-b border-border/40">
             <div className="flex items-center gap-2">
               <div className="w-6 h-6 rounded bg-accent/10 border border-accent/20 flex items-center justify-center text-accent">
@@ -186,7 +186,7 @@ export default function Projects() {
       actionText: 'Repository',
       actionHref: 'https://github.com',
       preview: (
-        <div className="w-52 bg-white border-2 border-ink rounded-2xl p-3 shadow-md transform group-hover:-translate-y-1.5 transition-transform duration-300">
+        <div className="w-52 bg-surface border-2 border-ink rounded-2xl p-3 shadow-md transform group-hover:-translate-y-1.5 transition-transform duration-300">
           {/* Phone Header Bar */}
           <div className="flex items-center justify-between text-[9px] font-mono text-ink-muted pb-2 border-b border-border/60">
             <span>9:41</span>
@@ -238,7 +238,7 @@ export default function Projects() {
       actionText: 'Live Demo',
       actionHref: 'https://github.com',
       preview: (
-        <div className="w-full bg-white border border-border rounded-lg p-3.5 text-xs font-mono shadow-sm space-y-2 transform group-hover:scale-[1.01] transition-transform duration-300">
+        <div className="w-full bg-surface border border-border rounded-lg p-3.5 text-xs font-mono shadow-sm space-y-2 transform group-hover:scale-[1.01] transition-transform duration-300">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <div className="w-6 h-6 rounded bg-accent/10 border border-accent/20 flex items-center justify-center text-accent">
@@ -293,8 +293,8 @@ export default function Projects() {
               onClick={() => setActiveCategory('all')}
               className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded border transition-all duration-300 cursor-pointer shadow-2xs active:scale-95 ${
                 activeCategory === 'all'
-                  ? 'border-ink bg-ink text-white font-medium shadow-accent-glow'
-                  : 'border-border bg-white text-ink-muted hover:text-ink hover:border-ink hover:bg-bg-alt/30'
+                  ? 'border-ink bg-ink text-surface font-medium shadow-accent-glow'
+                  : 'border-border bg-surface text-ink-muted hover:text-ink hover:border-ink hover:bg-bg-alt/30'
               }`}
             >
               <Layers className="w-3.5 h-3.5" />
@@ -305,8 +305,8 @@ export default function Projects() {
               onClick={() => setActiveCategory('webapp')}
               className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded border transition-all duration-300 cursor-pointer shadow-2xs active:scale-95 ${
                 activeCategory === 'webapp'
-                  ? 'border-ink bg-ink text-white font-medium shadow-accent-glow'
-                  : 'border-border bg-white text-ink-muted hover:text-ink hover:border-ink hover:bg-bg-alt/30'
+                  ? 'border-ink bg-ink text-surface font-medium shadow-accent-glow'
+                  : 'border-border bg-surface text-ink-muted hover:text-ink hover:border-ink hover:bg-bg-alt/30'
               }`}
             >
               <Globe className="w-3.5 h-3.5" />
@@ -317,8 +317,8 @@ export default function Projects() {
               onClick={() => setActiveCategory('product')}
               className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded border transition-all duration-300 cursor-pointer shadow-2xs active:scale-95 ${
                 activeCategory === 'product'
-                  ? 'border-ink bg-ink text-white font-medium shadow-accent-glow'
-                  : 'border-border bg-white text-ink-muted hover:text-ink hover:border-ink hover:bg-bg-alt/30'
+                  ? 'border-ink bg-ink text-surface font-medium shadow-accent-glow'
+                  : 'border-border bg-surface text-ink-muted hover:text-ink hover:border-ink hover:bg-bg-alt/30'
               }`}
             >
               <Layout className="w-3.5 h-3.5" />
@@ -329,8 +329,8 @@ export default function Projects() {
               onClick={() => setActiveCategory('mobile')}
               className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded border transition-all duration-300 cursor-pointer shadow-2xs active:scale-95 ${
                 activeCategory === 'mobile'
-                  ? 'border-ink bg-ink text-white font-medium shadow-accent-glow'
-                  : 'border-border bg-white text-ink-muted hover:text-ink hover:border-ink hover:bg-bg-alt/30'
+                  ? 'border-ink bg-ink text-surface font-medium shadow-accent-glow'
+                  : 'border-border bg-surface text-ink-muted hover:text-ink hover:border-ink hover:bg-bg-alt/30'
               }`}
             >
               <Smartphone className="w-3.5 h-3.5" />
@@ -350,7 +350,7 @@ export default function Projects() {
           >
             <article
               onClick={() => setPose(project.pose, project.poseMessage)}
-              className="card-hover-lift w-full bg-white border border-border rounded-xl overflow-hidden group flex flex-col justify-between cursor-pointer"
+              className="card-hover-lift w-full bg-surface border border-border rounded-xl overflow-hidden group flex flex-col justify-between cursor-pointer"
             >
               <div className="p-6 md:p-8">
                 <div className="flex items-center justify-between text-xs font-mono text-ink-muted mb-3">
@@ -359,7 +359,7 @@ export default function Projects() {
                 </div>
                 <h3 className="text-2xl md:text-3xl font-serif text-ink mb-2 group-hover:text-accent transition-colors flex items-center justify-between">
                   <span>{project.title}</span>
-                  <div className="w-7 h-7 rounded-full bg-bg border border-border flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white transition-all shadow-2xs">
+                  <div className="w-7 h-7 rounded-full bg-bg border border-border flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-surface transition-all shadow-2xs">
                     <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </div>
                 </h3>
@@ -381,14 +381,14 @@ export default function Projects() {
                 {project.preview}
               </div>
 
-              <div className="px-6 py-3.5 bg-white border-t border-border flex justify-between items-center text-xs font-mono">
+              <div className="px-6 py-3.5 bg-surface border-t border-border flex justify-between items-center text-xs font-mono">
                 <span className="text-ink-muted">{project.footerLabel}</span>
                 <a
                   href={project.actionHref}
                   onClick={(e) => e.stopPropagation()}
                   target={project.actionHref.startsWith('http') ? '_blank' : undefined}
                   rel={project.actionHref.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  className="inline-flex items-center gap-1.5 text-accent hover:text-[#9B6A33] font-semibold transition-colors group-hover:underline"
+                  className="inline-flex items-center gap-1.5 text-accent hover:text-accent-light font-semibold transition-colors group-hover:underline"
                 >
                   <span>{project.actionText}</span>
                   <ExternalLink className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />

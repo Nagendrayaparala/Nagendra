@@ -19,7 +19,7 @@ export default function Footer() {
             className="hover:text-ink transition-colors inline-flex items-center gap-1.5 group cursor-pointer"
           >
             <span>Back to top</span>
-            <div className="w-5 h-5 rounded bg-white border border-border flex items-center justify-center text-accent group-hover:border-accent shadow-2xs">
+            <div className="w-5 h-5 rounded bg-surface border border-border flex items-center justify-center text-accent group-hover:border-accent shadow-2xs">
               <ArrowUp className="w-3 h-3 transition-transform group-hover:-translate-y-0.5" />
             </div>
           </a>

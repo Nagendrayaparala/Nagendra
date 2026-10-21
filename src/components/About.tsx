@@ -19,13 +19,13 @@ export default function About() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
           {/* Left 5 cols: Avatar Thinking / Process Pose with ScrollReveal */}
           <ScrollReveal delayMs={0} className="lg:col-span-5 flex flex-col items-center">
-            <div className="card-hover-lift relative w-64 h-64 md:w-72 md:h-72 rounded-2xl bg-white border border-border p-4 shadow-sm flex flex-col items-center justify-end overflow-hidden group">
+            <div className="card-hover-lift relative w-64 h-64 md:w-72 md:h-72 rounded-2xl bg-surface border border-border p-4 shadow-sm flex flex-col items-center justify-end overflow-hidden group">
               <img
                 src="/avathars/nagendra_portrait.png"
                 alt="Yaparala Nagendra - Process portrait"
                 className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
               />
-              <div className="absolute top-3 left-3 bg-white/95 border border-border px-3 py-1 rounded-full text-[10px] font-mono text-ink-muted flex items-center gap-1.5 shadow-2xs group-hover:border-accent transition-colors">
+              <div className="absolute top-3 left-3 bg-surface/95 border border-border px-3 py-1 rounded-full text-[10px] font-mono text-ink-muted flex items-center gap-1.5 shadow-2xs group-hover:border-accent transition-colors">
                 <Sparkles className="w-3 h-3 text-accent animate-pulse-dot" />
                 <span>Focus: Clean Architecture</span>
               </div>
@@ -53,12 +53,12 @@ export default function About() {
 
             {/* 4 Steps Process Grid with Staggered ScrollReveal & Lift Animations */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-              <div className="card-hover-lift bg-white p-5 rounded-xl border border-border shadow-2xs group">
+              <div className="card-hover-lift bg-surface p-5 rounded-xl border border-border shadow-2xs group">
                 <div className="flex items-center justify-between mb-3">
                   <span className="font-mono text-xs text-accent font-semibold group-hover:text-ink transition-colors">
                     01 · Understand
                   </span>
-                  <div className="w-7 h-7 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white transition-colors">
+                  <div className="w-7 h-7 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-surface transition-colors">
                     <Search className="w-3.5 h-3.5" />
                   </div>
                 </div>
@@ -70,12 +70,12 @@ export default function About() {
                 </p>
               </div>
 
-              <div className="card-hover-lift bg-white p-5 rounded-xl border border-border shadow-2xs group">
+              <div className="card-hover-lift bg-surface p-5 rounded-xl border border-border shadow-2xs group">
                 <div className="flex items-center justify-between mb-3">
                   <span className="font-mono text-xs text-accent font-semibold group-hover:text-ink transition-colors">
                     02 · Structure
                   </span>
-                  <div className="w-7 h-7 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white transition-colors">
+                  <div className="w-7 h-7 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-surface transition-colors">
                     <Boxes className="w-3.5 h-3.5" />
                   </div>
                 </div>
@@ -87,12 +87,12 @@ export default function About() {
                 </p>
               </div>
 
-              <div className="card-hover-lift bg-white p-5 rounded-xl border border-border shadow-2xs group">
+              <div className="card-hover-lift bg-surface p-5 rounded-xl border border-border shadow-2xs group">
                 <div className="flex items-center justify-between mb-3">
                   <span className="font-mono text-xs text-accent font-semibold group-hover:text-ink transition-colors">
                     03 · Build
                   </span>
-                  <div className="w-7 h-7 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white transition-colors">
+                  <div className="w-7 h-7 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-surface transition-colors">
                     <Code2 className="w-3.5 h-3.5" />
                   </div>
                 </div>
@@ -104,12 +104,12 @@ export default function About() {
                 </p>
               </div>
 
-              <div className="card-hover-lift bg-white p-5 rounded-xl border border-border shadow-2xs group">
+              <div className="card-hover-lift bg-surface p-5 rounded-xl border border-border shadow-2xs group">
                 <div className="flex items-center justify-between mb-3">
                   <span className="font-mono text-xs text-accent font-semibold group-hover:text-ink transition-colors">
                     04 · Test &amp; Refine
                   </span>
-                  <div className="w-7 h-7 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white transition-colors">
+                  <div className="w-7 h-7 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-surface transition-colors">
                     <Gauge className="w-3.5 h-3.5" />
                   </div>
                 </div>

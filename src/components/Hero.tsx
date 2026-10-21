@@ -78,7 +78,8 @@ export default function Hero() {
         <div
           className="absolute inset-0 pointer-events-none transition-opacity duration-500 opacity-100"
           style={{
-            background: `radial-gradient(650px circle at ${mousePos.x}px ${mousePos.y}px, rgba(223, 190, 153, 0.18), transparent 75%)`,
+            background: `radial-gradient(650px circle at ${mousePos.x}px ${mousePos.y}px, var(--color-accent-light) 0%, transparent 75%)`,
+            opacity: 0.15,
           }}
         />
       )}
@@ -88,7 +89,7 @@ export default function Hero() {
           {/* Left Column: Typography & Intent */}
           <div className="lg:col-span-7 flex flex-col justify-center space-y-6">
             <div className="flex items-center gap-3">
-              <div className="inline-flex items-center gap-1.5 bg-white border border-border px-2.5 py-1 rounded text-accent font-mono text-[11px] font-medium uppercase tracking-[0.18em] shadow-2xs">
+              <div className="inline-flex items-center gap-1.5 bg-surface border border-border px-2.5 py-1 rounded text-accent font-mono text-[11px] font-medium uppercase tracking-[0.18em] shadow-2xs">
                 <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse-dot"></span>
                 <span>Frontend Developer</span>
               </div>
@@ -112,19 +113,19 @@ export default function Hero() {
                 <Layers className="w-3.5 h-3.5 text-accent" />
                 <span>Core stack:</span>
               </span>
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-white border border-border rounded text-ink font-medium shadow-2xs hover:border-accent hover:-translate-y-0.5 transition-all">
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-surface border border-border rounded text-ink font-medium shadow-2xs hover:border-accent hover:-translate-y-0.5 transition-all">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#61DAFB] animate-pulse-dot"></span>
                 <span>React.js</span>
               </span>
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-white border border-border rounded text-ink font-medium shadow-2xs hover:border-accent hover:-translate-y-0.5 transition-all">
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-surface border border-border rounded text-ink font-medium shadow-2xs hover:border-accent hover:-translate-y-0.5 transition-all">
                 <span className="w-1.5 h-1.5 rounded-full bg-ink"></span>
                 <span>Next.js</span>
               </span>
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-white border border-border rounded text-ink font-medium shadow-2xs hover:border-accent hover:-translate-y-0.5 transition-all">
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-surface border border-border rounded text-ink font-medium shadow-2xs hover:border-accent hover:-translate-y-0.5 transition-all">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#F7DF1E]"></span>
                 <span>JavaScript</span>
               </span>
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-white border border-border rounded text-ink font-medium shadow-2xs hover:border-accent hover:-translate-y-0.5 transition-all">
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-surface border border-border rounded text-ink font-medium shadow-2xs hover:border-accent hover:-translate-y-0.5 transition-all">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#3178C6]"></span>
                 <span>TypeScript</span>
               </span>
@@ -134,7 +135,7 @@ export default function Hero() {
             <div className="pt-4 flex flex-wrap items-center gap-4">
               <a
                 href="#work"
-                className="btn-shimmer inline-flex items-center gap-2 px-6 py-3.5 bg-ink text-white text-sm font-medium hover:bg-accent transition-all duration-300 rounded shadow-sm hover:shadow-accent-glow active:scale-[0.98] group"
+                className="btn-shimmer inline-flex items-center gap-2 px-6 py-3.5 bg-ink text-surface text-sm font-medium hover:bg-accent hover:text-surface transition-all duration-300 rounded shadow-sm hover:shadow-accent-glow active:scale-[0.98] group"
               >
                 <span>Explore my work</span>
                 <ArrowUpRight className="w-4 h-4 text-accent-light transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
@@ -145,9 +146,9 @@ export default function Hero() {
                 onClick={() =>
                   setPose('greeting', 'Nagendra smiles and waves: "Hello there! Pleased to meet you."')
                 }
-                className="inline-flex items-center gap-2 px-5 py-3.5 bg-white border border-border hover:border-accent text-ink text-sm font-medium hover:bg-bg-alt/30 transition-all rounded shadow-2xs hover:shadow-md active:scale-[0.98] cursor-pointer group"
+                className="inline-flex items-center gap-2 px-5 py-3.5 bg-surface border border-border hover:border-accent text-ink text-sm font-medium hover:bg-bg-alt/30 transition-all rounded shadow-2xs hover:shadow-md active:scale-[0.98] cursor-pointer group"
               >
-                <div className="w-6 h-6 rounded-full bg-accent/10 border border-accent/20 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white transition-colors duration-300">
+                <div className="w-6 h-6 rounded-full bg-accent/10 border border-accent/20 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-surface transition-colors duration-300">
                   <Sparkles className="w-3.5 h-3.5 group-hover:rotate-12 transition-transform duration-300" />
                 </div>
                 <span>Say hello</span>
@@ -171,7 +172,7 @@ export default function Hero() {
               className={`inline-flex items-center gap-2 text-[11px] font-mono text-ink-muted px-3.5 py-1.5 rounded-full w-fit transition-all duration-300 shadow-2xs ${
                 isPillActive
                   ? 'bg-accent/10 border border-accent text-accent scale-[1.02]'
-                  : 'bg-white/80 border border-border/80'
+                  : 'bg-surface/80 border border-border/80'
               }`}
             >
               <span className="relative flex h-2 w-2">
@@ -186,7 +187,7 @@ export default function Hero() {
           <div className="lg:col-span-5 flex justify-center items-center relative">
             <div className="relative w-full max-w-[420px] aspect-square flex items-center justify-center">
               {/* Layered code-editor element with gentle float animation */}
-              <div className="animate-code-float absolute -top-4 -right-2 md:-right-6 w-64 md:w-72 bg-white/95 backdrop-blur-md rounded-lg border border-border shadow-lg p-3.5 font-mono text-[11px] text-ink z-0 select-none pointer-events-none transition-transform duration-500 hover:rotate-0">
+              <div className="animate-code-float absolute -top-4 -right-2 md:-right-6 w-64 md:w-72 bg-surface/95 backdrop-blur-md rounded-lg border border-border shadow-lg p-3.5 font-mono text-[11px] text-ink z-0 select-none pointer-events-none transition-transform duration-500 hover:rotate-0">
                 <div className="flex items-center justify-between pb-2 mb-2 border-b border-border/60 text-ink-muted text-[10px]">
                   <div className="flex items-center gap-1.5">
                     <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F56] border border-[#E0443E]/60 inline-block"></span>
@@ -202,13 +203,13 @@ export default function Hero() {
                   <span className="text-accent font-semibold">const</span> developer = &#123;
                 </p>
                 <p className="pl-3 text-ink-muted">
-                  name: <span className="text-[#9B6A33] font-medium">&apos;Yaparala Nagendra&apos;</span>,
+                  name: <span className="text-accent font-medium">&apos;Yaparala Nagendra&apos;</span>,
                 </p>
                 <p className="pl-3 text-ink-muted">
-                  role: <span className="text-[#9B6A33] font-medium">&apos;Frontend Dev&apos;</span>,
+                  role: <span className="text-accent font-medium">&apos;Frontend Dev&apos;</span>,
                 </p>
                 <p className="pl-3 text-ink-muted">
-                  passion: <span className="text-[#9B6A33] font-medium">&apos;Craft &amp; UI Precision&apos;</span>,
+                  passion: <span className="text-accent font-medium">&apos;Craft &amp; UI Precision&apos;</span>,
                 </p>
                 <p className="pl-3 text-ink-muted">
                   openToWork: <span className="text-emerald-700 font-semibold">true</span>
@@ -218,7 +219,7 @@ export default function Hero() {
               </div>
 
               {/* Ambient circular breathing halo */}
-              <div className="animate-halo-breathe absolute inset-4 rounded-full bg-gradient-to-tr from-accent/20 via-bg-alt to-accent/15 blur-2xl -z-10"></div>
+              <div className="animate-halo-breathe absolute inset-4 rounded-full bg-gradient-to-tr from-accent/25 via-bg-alt to-accent/15 blur-2xl -z-10"></div>
 
               {/* Avatar Wrapper with Dynamic Poses & Physics */}
               <div
@@ -229,7 +230,7 @@ export default function Hero() {
                 className="animate-avatar-float relative z-10 w-full flex flex-col items-center group cursor-pointer transition-transform duration-500 hover:scale-[1.03]"
               >
                 {/* Transparent Cutout Portrait with Ripple Ring Effect */}
-                <div className="relative w-64 h-64 md:w-80 md:h-80 overflow-hidden flex items-end justify-center rounded-2xl bg-white/40 border border-border/40 shadow-xs">
+                <div className="relative w-64 h-64 md:w-80 md:h-80 overflow-hidden flex items-end justify-center rounded-2xl bg-surface/40 border border-border/40 shadow-xs">
                   {hasRipple && (
                     <div className="animate-ripple absolute inset-0 rounded-2xl border-2 border-accent pointer-events-none" />
                   )}
@@ -245,7 +246,7 @@ export default function Hero() {
                   {/* Pose badge overlay */}
                   <div
                     id="pose-tag"
-                    className="absolute bottom-2 bg-ink/90 text-white font-mono text-[10px] px-2.5 py-0.5 rounded-full backdrop-blur-sm opacity-90 shadow inline-flex items-center gap-1.5 transition-all duration-300"
+                    className="absolute bottom-2 bg-ink/90 text-surface font-mono text-[10px] px-2.5 py-0.5 rounded-full backdrop-blur-sm opacity-90 shadow inline-flex items-center gap-1.5 transition-all duration-300"
                   >
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse-dot"></span>
                     <span>{getPoseLabel(currentPose)}</span>
@@ -254,7 +255,7 @@ export default function Hero() {
 
                 {/* Quick Pose Selector Bar with Bespoke Icons */}
                 <div
-                  className="mt-4 flex items-center gap-1 bg-white/95 backdrop-blur-sm border border-border p-1 rounded-full shadow-2xs text-[11px] font-mono"
+                  className="mt-4 flex items-center gap-1 bg-surface/95 backdrop-blur-sm border border-border p-1 rounded-full shadow-2xs text-[11px] font-mono"
                   onClick={(e) => e.stopPropagation()}
                 >
                   <button

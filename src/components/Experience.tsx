@@ -33,11 +33,11 @@ export default function Experience() {
         <div className="space-y-6 max-w-4xl">
           {/* Role 1: Current Frontend Role */}
           <ScrollReveal delayMs={100}>
-            <div className="card-hover-lift bg-white border border-border rounded-xl p-6 md:p-8 transition-all duration-300 shadow-2xs group">
+            <div className="card-hover-lift bg-surface border border-border rounded-xl p-6 md:p-8 transition-all duration-300 shadow-2xs group">
               <div className="flex flex-col md:flex-row md:items-baseline justify-between gap-3 mb-5 pb-4 border-b border-border/50">
                 <div>
                   <div className="flex items-center gap-3">
-                    <div className="w-7 h-7 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent shadow-2xs group-hover:bg-accent group-hover:text-white transition-colors duration-300">
+                    <div className="w-7 h-7 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent shadow-2xs group-hover:bg-accent group-hover:text-surface transition-colors duration-300">
                       <Briefcase className="w-3.5 h-3.5" />
                     </div>
                     <h3 className="text-xl font-medium text-ink group-hover:text-accent transition-colors">
@@ -62,7 +62,7 @@ export default function Experience() {
 
               <ul className="space-y-3 text-sm text-ink-muted leading-relaxed">
                 <li className="flex items-start gap-3 group/item">
-                  <div className="w-5 h-5 rounded bg-accent/10 border border-accent/20 flex items-center justify-center text-accent shrink-0 mt-0.5 group-hover/item:bg-accent group-hover/item:text-white transition-colors">
+                  <div className="w-5 h-5 rounded bg-accent/10 border border-accent/20 flex items-center justify-center text-accent shrink-0 mt-0.5 group-hover/item:bg-accent group-hover/item:text-surface transition-colors">
                     <Check className="w-3 h-3 stroke-[2.5]" />
                   </div>
                   <span>
@@ -71,7 +71,7 @@ export default function Experience() {
                   </span>
                 </li>
                 <li className="flex items-start gap-3 group/item">
-                  <div className="w-5 h-5 rounded bg-accent/10 border border-accent/20 flex items-center justify-center text-accent shrink-0 mt-0.5 group-hover/item:bg-accent group-hover/item:text-white transition-colors">
+                  <div className="w-5 h-5 rounded bg-accent/10 border border-accent/20 flex items-center justify-center text-accent shrink-0 mt-0.5 group-hover/item:bg-accent group-hover/item:text-surface transition-colors">
                     <Check className="w-3 h-3 stroke-[2.5]" />
                   </div>
                   <span>
@@ -80,7 +80,7 @@ export default function Experience() {
                   </span>
                 </li>
                 <li className="flex items-start gap-3 group/item">
-                  <div className="w-5 h-5 rounded bg-accent/10 border border-accent/20 flex items-center justify-center text-accent shrink-0 mt-0.5 group-hover/item:bg-accent group-hover/item:text-white transition-colors">
+                  <div className="w-5 h-5 rounded bg-accent/10 border border-accent/20 flex items-center justify-center text-accent shrink-0 mt-0.5 group-hover/item:bg-accent group-hover/item:text-surface transition-colors">
                     <Check className="w-3 h-3 stroke-[2.5]" />
                   </div>
                   <span>
@@ -116,11 +116,11 @@ export default function Experience() {
 
           {/* Role 2: Frontend Engineering Internship */}
           <ScrollReveal delayMs={200}>
-            <div className="card-hover-lift bg-white border border-border rounded-xl p-6 md:p-8 transition-all duration-300 shadow-2xs group">
+            <div className="card-hover-lift bg-surface border border-border rounded-xl p-6 md:p-8 transition-all duration-300 shadow-2xs group">
               <div className="flex flex-col md:flex-row md:items-baseline justify-between gap-3 mb-5 pb-4 border-b border-border/50">
                 <div>
                   <div className="flex items-center gap-3">
-                    <div className="w-7 h-7 rounded-lg bg-bg-alt/70 border border-border flex items-center justify-center text-accent shadow-2xs group-hover:bg-accent group-hover:text-white transition-colors duration-300">
+                    <div className="w-7 h-7 rounded-lg bg-bg-alt/70 border border-border flex items-center justify-center text-accent shadow-2xs group-hover:bg-accent group-hover:text-surface transition-colors duration-300">
                       <GraduationCap className="w-3.5 h-3.5" />
                     </div>
                     <h3 className="text-xl font-medium text-ink group-hover:text-accent transition-colors">
@@ -141,7 +141,7 @@ export default function Experience() {
 
               <ul className="space-y-3 text-sm text-ink-muted leading-relaxed">
                 <li className="flex items-start gap-3 group/item">
-                  <div className="w-5 h-5 rounded bg-accent/10 border border-accent/20 flex items-center justify-center text-accent shrink-0 mt-0.5 group-hover/item:bg-accent group-hover/item:text-white transition-colors">
+                  <div className="w-5 h-5 rounded bg-accent/10 border border-accent/20 flex items-center justify-center text-accent shrink-0 mt-0.5 group-hover/item:bg-accent group-hover/item:text-surface transition-colors">
                     <Check className="w-3 h-3 stroke-[2.5]" />
                   </div>
                   <span>
@@ -150,7 +150,7 @@ export default function Experience() {
                   </span>
                 </li>
                 <li className="flex items-start gap-3 group/item">
-                  <div className="w-5 h-5 rounded bg-accent/10 border border-accent/20 flex items-center justify-center text-accent shrink-0 mt-0.5 group-hover/item:bg-accent group-hover/item:text-white transition-colors">
+                  <div className="w-5 h-5 rounded bg-accent/10 border border-accent/20 flex items-center justify-center text-accent shrink-0 mt-0.5 group-hover/item:bg-accent group-hover/item:text-surface transition-colors">
                     <Check className="w-3 h-3 stroke-[2.5]" />
                   </div>
                   <span>
@@ -159,7 +159,7 @@ export default function Experience() {
                   </span>
                 </li>
                 <li className="flex items-start gap-3 group/item">
-                  <div className="w-5 h-5 rounded bg-accent/10 border border-accent/20 flex items-center justify-center text-accent shrink-0 mt-0.5 group-hover/item:bg-accent group-hover/item:text-white transition-colors">
+                  <div className="w-5 h-5 rounded bg-accent/10 border border-accent/20 flex items-center justify-center text-accent shrink-0 mt-0.5 group-hover/item:bg-accent group-hover/item:text-surface transition-colors">
                     <Check className="w-3 h-3 stroke-[2.5]" />
                   </div>
                   <span>
