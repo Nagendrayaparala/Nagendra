@@ -109,7 +109,10 @@ export default function Contact() {
 
             {/* Right 4 cols: Welcoming Avatar Portrait Mini */}
             <div className="lg:col-span-4 flex flex-col items-center justify-center pt-6 lg:pt-0">
-              <div className="w-36 h-36 rounded-full overflow-hidden border-2 border-accent/40 shadow-sm bg-bg-alt/50 p-1 group">
+              <div
+                className="w-36 h-36 rounded-full overflow-hidden border-2 border-accent shadow-theme-glow p-1 group transition-all duration-300 relative"
+                style={{ background: 'var(--theme-arch-gradient)' }}
+              >
                 <img
                   src="/avathars/nagendra_portrait.png"
                   alt="Nagendra smiling formal portrait"

@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useAvatar, PoseType } from '@/context/AvatarContext';
+import { useTheme, PALETTES } from '@/context/ThemeContext';
 import {
   ArrowUpRight,
   Sparkles,
@@ -15,6 +16,7 @@ import {
 
 export default function Hero() {
   const { currentPose, statusMessage, isPillActive, setPose } = useAvatar();
+  const { palette, setPalette, activePaletteInfo } = useTheme();
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
   const [hasRipple, setHasRipple] = useState(false);
@@ -88,13 +90,20 @@ export default function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center min-h-[580px]">
           {/* Left Column: Typography & Intent */}
           <div className="lg:col-span-7 flex flex-col justify-center space-y-6">
-            <div className="flex items-center gap-3">
+            <div className="flex flex-wrap items-center gap-3">
               <div className="inline-flex items-center gap-1.5 bg-surface border border-border px-2.5 py-1 rounded text-accent font-mono text-[11px] font-medium uppercase tracking-[0.18em] shadow-2xs">
                 <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse-dot"></span>
                 <span>Frontend Developer</span>
               </div>
-              <span className="h-px w-8 bg-accent/30"></span>
-              <span className="font-mono text-[11px] text-ink-muted">React · Next.js · TS</span>
+              <span className="hidden sm:inline-block h-px w-6 bg-accent/30"></span>
+              <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-surface border border-border shadow-2xs font-mono text-[11px] text-ink">
+                <span className="w-2.5 h-2.5 rounded-full overflow-hidden flex border border-border/80 shrink-0 shadow-2xs">
+                  <span className="w-1/2 h-full" style={{ backgroundColor: activePaletteInfo.primaryColor }} />
+                  <span className="w-1/2 h-full" style={{ backgroundColor: activePaletteInfo.secondaryColor }} />
+                </span>
+                <span className="font-bold text-[10px] tracking-wider uppercase text-ink">{activePaletteInfo.name}</span>
+                <span className="text-[10px] text-ink-muted">HEX: {activePaletteInfo.primaryColor}</span>
+              </div>
             </div>
 
             <h1 className="clamp-hero font-serif font-normal text-ink tracking-tight">
@@ -218,8 +227,11 @@ export default function Hero() {
                 <p className="text-ink-muted">&#125;;</p>
               </div>
 
-              {/* Ambient circular breathing halo */}
-              <div className="animate-halo-breathe absolute inset-4 rounded-full bg-gradient-to-tr from-accent/25 via-bg-alt to-accent/15 blur-2xl -z-10"></div>
+              {/* Ambient circular breathing halo tuned to theme glow */}
+              <div
+                className="animate-halo-breathe absolute inset-2 rounded-full blur-2xl -z-10"
+                style={{ background: 'radial-gradient(circle, var(--theme-glow) 0%, transparent 70%)' }}
+              />
 
               {/* Avatar Wrapper with Dynamic Poses & Physics */}
               <div
@@ -227,12 +239,22 @@ export default function Hero() {
                 onClick={() =>
                   setPose('greeting', 'Nagendra smiles: "Thanks for inspecting! Let\'s build something great."')
                 }
-                className="animate-avatar-float relative z-10 w-full flex flex-col items-center group cursor-pointer transition-transform duration-500 hover:scale-[1.03]"
+                className="animate-avatar-float relative z-10 w-full flex flex-col items-center group cursor-pointer transition-transform duration-500 hover:scale-[1.02]"
               >
-                {/* Transparent Cutout Portrait with Ripple Ring Effect */}
-                <div className="relative w-64 h-64 md:w-80 md:h-80 overflow-hidden flex items-end justify-center rounded-2xl bg-surface/40 border border-border/40 shadow-xs">
+                {/* Architectural Arch Stage with Palette Dual-Tone Backdrop */}
+                <div
+                  className="relative w-64 h-72 md:w-80 md:h-88 overflow-hidden flex items-end justify-center rounded-3xl border border-border shadow-md transition-all duration-500 group-hover:shadow-theme-glow"
+                  style={{ background: 'var(--theme-arch-gradient)' }}
+                >
+                  {/* Top Designer Hex Pill directly from user design */}
+                  <div className="absolute top-3 inset-x-0 mx-auto w-fit z-20 flex items-center gap-2 px-3 py-1 rounded-full bg-surface/90 border border-border/80 backdrop-blur-md shadow-2xs font-mono text-[10px] text-ink">
+                    <span className="w-2 h-2 rounded-full shrink-0" style={{ backgroundColor: activePaletteInfo.primaryColor }} />
+                    <span className="font-bold uppercase tracking-wider">{activePaletteInfo.name}</span>
+                    <span className="text-ink-muted">HEX : {activePaletteInfo.primaryColor}</span>
+                  </div>
+
                   {hasRipple && (
-                    <div className="animate-ripple absolute inset-0 rounded-2xl border-2 border-accent pointer-events-none" />
+                    <div className="animate-ripple absolute inset-0 rounded-3xl border-2 border-accent pointer-events-none" />
                   )}
 
                   <img
@@ -251,6 +273,34 @@ export default function Hero() {
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse-dot"></span>
                     <span>{getPoseLabel(currentPose)}</span>
                   </div>
+                </div>
+
+                {/* Theme Palette Swipe Dots Bar (Directly from user's reference designs!) */}
+                <div
+                  className="mt-2.5 flex items-center justify-between w-full max-w-[280px] px-2 text-[10px] font-mono text-ink-muted select-none"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <span className="opacity-80">HEX : {activePaletteInfo.secondaryColor}</span>
+                  <div className="flex items-center gap-1.5">
+                    {PALETTES.map((p) => (
+                      <button
+                        key={p.id}
+                        type="button"
+                        onClick={() => setPalette(p.id)}
+                        title={p.name}
+                        aria-label={`Switch to ${p.name}`}
+                        className={`w-2.5 h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
+                          p.id === palette
+                            ? 'ring-2 ring-accent scale-125'
+                            : 'opacity-50 hover:opacity-100 hover:scale-110'
+                        }`}
+                        style={{ backgroundColor: p.primaryColor }}
+                      />
+                    ))}
+                  </div>
+                  <span className="font-semibold text-accent flex items-center gap-0.5">
+                    SWIPE <span>&rsaquo;</span>
+                  </span>
                 </div>
 
                 {/* Quick Pose Selector Bar with Bespoke Icons */}

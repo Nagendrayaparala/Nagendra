@@ -12,6 +12,8 @@ const config: Config = {
         bg: 'var(--color-bg)',
         'bg-alt': 'var(--color-bg-alt)',
         surface: 'var(--color-surface)',
+        primary: 'var(--color-primary)',
+        secondary: 'var(--color-secondary)',
         accent: 'var(--color-accent)',
         'accent-light': 'var(--color-accent-light)',
         border: 'var(--color-border)',
@@ -28,6 +30,8 @@ const config: Config = {
       boxShadow: {
         '2xs': '0 1px 2px rgba(41, 43, 40, 0.05)',
         'accent-glow': '0 12px 30px -8px var(--color-accent-light)',
+        'theme-glow': '0 16px 36px -10px var(--theme-glow)',
+        'theme-halo': '0 0 60px 10px var(--theme-glow)',
         'lift': '0 18px 36px -10px rgba(41, 43, 40, 0.12), 0 0 1px var(--color-border)',
       },
       keyframes: {

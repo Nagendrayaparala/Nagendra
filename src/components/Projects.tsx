@@ -62,7 +62,7 @@ export default function Projects() {
       actionText: 'Demo / Inquire',
       actionHref: '#contact',
       preview: (
-        <div className="w-full bg-surface rounded-lg border border-border shadow-sm overflow-hidden transform group-hover:scale-[1.02] transition-transform duration-500">
+        <div className="w-full bg-surface rounded-xl border border-border shadow-sm overflow-hidden transform group-hover:scale-[1.02] group-hover:border-accent group-hover:shadow-theme-glow transition-all duration-500">
           {/* Simulated Browser Bar with Jewel Controls */}
           <div className="bg-bg px-3.5 py-2.5 border-b border-border flex items-center justify-between">
             <div className="flex items-center gap-1.5">
@@ -77,18 +77,21 @@ export default function Projects() {
             <div className="w-8"></div>
           </div>
 
-          <div className="p-4 space-y-3">
-            <div className="flex justify-between items-center pb-2.5 border-b border-border/40">
-              <div className="flex items-center gap-2">
-                <Layout className="w-4 h-4 text-accent" />
-                <span className="text-xs font-medium text-ink">Frontend Engineering Assessment #04</span>
-              </div>
-              <span className="inline-flex items-center gap-1 text-[11px] font-mono text-emerald-800 bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded font-semibold shadow-2xs">
-                <CheckCircle2 className="w-3 h-3 text-emerald-600" />
-                <span>Score: 94/100</span>
-              </span>
+          {/* Project Screenshot Visual with Theme Overlay */}
+          <div className="relative h-44 sm:h-52 w-full overflow-hidden bg-bg">
+            <img
+              src="/projects/mockwin.jpg"
+              alt="MockWin recruitment candidate assessment engine interface"
+              className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/20 to-transparent"></div>
+            <div className="absolute top-3 right-3 inline-flex items-center gap-1 text-[11px] font-mono text-emerald-800 bg-surface/95 border border-emerald-200 px-2.5 py-0.5 rounded font-semibold shadow-2xs backdrop-blur-md">
+              <CheckCircle2 className="w-3 h-3 text-emerald-600" />
+              <span>Score: 94/100</span>
             </div>
+          </div>
 
+          <div className="p-4 space-y-3 bg-surface border-t border-border/40">
             <div className="grid grid-cols-3 gap-2.5 text-[10px] font-mono">
               <div className="bg-bg p-2.5 rounded border border-border/60 hover:border-accent transition-colors">
                 <div className="flex items-center gap-1 text-ink-muted mb-0.5">
@@ -134,38 +137,45 @@ export default function Projects() {
       actionText: 'GitHub Source',
       actionHref: 'https://github.com',
       preview: (
-        <div className="w-full bg-surface rounded-lg border border-border p-4 shadow-sm space-y-3 transform group-hover:scale-[1.02] transition-transform duration-500">
-          <div className="flex items-center justify-between pb-2 border-b border-border/40">
-            <div className="flex items-center gap-2">
-              <div className="w-6 h-6 rounded bg-accent/10 border border-accent/20 flex items-center justify-center text-accent">
-                <ShoppingCart className="w-3.5 h-3.5" />
+        <div className="w-full bg-surface rounded-xl border border-border shadow-sm overflow-hidden transform group-hover:scale-[1.02] group-hover:border-accent group-hover:shadow-theme-glow transition-all duration-500">
+          {/* Project Screenshot Visual with Theme Overlay */}
+          <div className="relative h-44 sm:h-52 w-full overflow-hidden bg-bg">
+            <img
+              src="/projects/ecom_rkv.jpg"
+              alt="Ecom-RKV full-stack storefront interface"
+              className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/30 to-transparent"></div>
+            <div className="absolute top-3 left-3 flex items-center gap-2 bg-surface/90 border border-border px-2.5 py-1 rounded-full backdrop-blur-md shadow-2xs">
+              <div className="w-5 h-5 rounded bg-accent/10 border border-accent/20 flex items-center justify-center text-accent">
+                <ShoppingCart className="w-3 h-3" />
               </div>
-              <span className="text-xs font-mono text-ink font-medium">Cart Summary (3 Items)</span>
+              <span className="text-[11px] font-mono text-ink font-medium">Cart: 3 Items</span>
             </div>
-            <span className="text-xs font-bold text-accent font-mono bg-bg-alt/60 px-2 py-0.5 rounded border border-border">
+            <span className="absolute top-3 right-3 text-xs font-bold text-accent font-mono bg-surface/90 px-2.5 py-1 rounded-full border border-border backdrop-blur-md shadow-2xs">
               $184.50
             </span>
           </div>
 
-          <div className="space-y-1">
+          <div className="p-4 bg-surface space-y-2 border-t border-border/40">
             <div className="flex justify-between text-[10px] font-mono text-ink-muted">
-              <span>Checkout Progress</span>
+              <span>Checkout Flow Progress</span>
               <span className="text-emerald-700 font-semibold">85% Complete</span>
             </div>
-            <div className="h-2 w-full bg-bg rounded-full overflow-hidden border border-border/50">
+            <div className="h-1.5 w-full bg-bg rounded-full overflow-hidden border border-border/50">
               <div className="h-full bg-accent stripe-animated rounded-full w-4/5"></div>
             </div>
-          </div>
 
-          <div className="text-[11px] font-mono text-ink-muted flex items-center justify-between pt-1">
-            <span className="inline-flex items-center gap-1">
-              <CreditCard className="w-3 h-3 text-accent" />
-              <span>Stripe 3DS: Active</span>
-            </span>
-            <span className="inline-flex items-center gap-1 text-emerald-700 font-medium">
-              <ShieldCheck className="w-3 h-3" />
-              <span>Optimized Flow</span>
-            </span>
+            <div className="text-[11px] font-mono text-ink-muted flex items-center justify-between pt-1">
+              <span className="inline-flex items-center gap-1">
+                <CreditCard className="w-3 h-3 text-accent" />
+                <span>Stripe 3DS: Active</span>
+              </span>
+              <span className="inline-flex items-center gap-1 text-emerald-700 font-medium">
+                <ShieldCheck className="w-3 h-3" />
+                <span>Optimized Flow</span>
+              </span>
+            </div>
           </div>
         </div>
       ),
@@ -186,38 +196,35 @@ export default function Projects() {
       actionText: 'Repository',
       actionHref: 'https://github.com',
       preview: (
-        <div className="w-52 bg-surface border-2 border-ink rounded-2xl p-3 shadow-md transform group-hover:-translate-y-1.5 transition-transform duration-300">
-          {/* Phone Header Bar */}
-          <div className="flex items-center justify-between text-[9px] font-mono text-ink-muted pb-2 border-b border-border/60">
-            <span>9:41</span>
-            <div className="h-1.5 w-12 bg-ink/30 rounded-full"></div>
-            <div className="flex items-center gap-1">
-              <Wifi className="w-2.5 h-2.5 text-ink" />
-              <Battery className="w-2.5 h-2.5 text-ink" />
-            </div>
-          </div>
-
-          {/* Simulated App Card */}
-          <div className="mt-2.5 space-y-2">
-            <div className="flex items-center gap-1.5">
-              <span className="relative flex h-2.5 w-2.5">
+        <div className="w-full bg-surface rounded-xl border border-border shadow-sm overflow-hidden transform group-hover:scale-[1.01] group-hover:border-accent group-hover:shadow-theme-glow transition-all duration-500">
+          <div className="relative h-44 sm:h-52 w-full overflow-hidden bg-bg">
+            <img
+              src="/projects/mirror_news.jpg"
+              alt="Mirror News Android mobile news application"
+              className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/30 to-transparent"></div>
+            <div className="absolute top-3 left-3 flex items-center gap-1.5 bg-surface/90 border border-border px-2.5 py-1 rounded-full backdrop-blur-md shadow-2xs">
+              <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-rose-600"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-rose-600"></span>
               </span>
               <span className="text-[10px] font-mono text-rose-700 font-semibold uppercase tracking-wider">
-                Breaking News
+                Live Newsfeed
               </span>
             </div>
-            <div className="h-3.5 bg-bg-alt rounded w-4/5"></div>
-            <div className="space-y-1">
-              <div className="h-2 bg-border/60 rounded w-full"></div>
-              <div className="h-2 bg-border/60 rounded w-5/6"></div>
+            <div className="absolute top-3 right-3 flex items-center gap-1 text-[10px] font-mono text-ink bg-surface/90 px-2 py-1 rounded border border-border backdrop-blur-md">
+              <Wifi className="w-3 h-3 text-ink" />
+              <span>9:41</span>
             </div>
           </div>
 
-          <div className="mt-3 pt-2 border-t border-border/40 text-[9px] font-mono text-ink-muted text-center flex items-center justify-center gap-1.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse-dot"></span>
-            <span>Android Client · NewsAPI Live</span>
+          <div className="p-3.5 bg-surface text-[10px] font-mono text-ink-muted flex items-center justify-between border-t border-border/40">
+            <span className="flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse-dot"></span>
+              <span>Android Client · NewsAPI Live</span>
+            </span>
+            <span className="text-accent font-medium">Offline SQLite Cache</span>
           </div>
         </div>
       ),
@@ -238,21 +245,25 @@ export default function Projects() {
       actionText: 'Live Demo',
       actionHref: 'https://github.com',
       preview: (
-        <div className="w-full bg-surface border border-border rounded-lg p-3.5 text-xs font-mono shadow-sm space-y-2 transform group-hover:scale-[1.01] transition-transform duration-300">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <div className="w-6 h-6 rounded bg-accent/10 border border-accent/20 flex items-center justify-center text-accent">
-                <ShoppingBag className="w-3.5 h-3.5" />
-              </div>
-              <span className="text-ink font-medium">Boutique Lookbook Catalog</span>
+        <div className="w-full bg-surface rounded-xl border border-border shadow-sm overflow-hidden transform group-hover:scale-[1.01] group-hover:border-accent group-hover:shadow-theme-glow transition-all duration-500">
+          <div className="relative h-44 sm:h-52 w-full overflow-hidden bg-bg">
+            <img
+              src="/projects/canvas_studio.jpg"
+              alt="Raraa Boutique apparel lookbook storefront"
+              className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/30 to-transparent"></div>
+            <div className="absolute top-3 left-3 flex items-center gap-1.5 bg-surface/90 border border-border px-2.5 py-1 rounded-full backdrop-blur-md shadow-2xs">
+              <ShoppingBag className="w-3.5 h-3.5 text-accent" />
+              <span className="text-[10px] font-mono text-ink font-medium">Boutique Lookbook Catalog</span>
             </div>
-            <span className="inline-flex items-center gap-1 text-accent text-[11px] font-semibold bg-bg-alt/50 px-2 py-0.5 rounded border border-border">
+            <span className="absolute top-3 right-3 inline-flex items-center gap-1 text-accent text-[11px] font-mono font-semibold bg-surface/90 px-2 py-0.5 rounded border border-border backdrop-blur-md shadow-2xs">
               <Sparkles className="w-3 h-3 text-accent animate-pulse-dot" />
               <span>100% Native DOM</span>
             </span>
           </div>
 
-          <div className="grid grid-cols-3 gap-2 pt-1 text-[10px] text-ink-muted">
+          <div className="p-3 bg-surface grid grid-cols-3 gap-2 text-[10px] font-mono text-ink-muted border-t border-border/40">
             <div className="bg-bg p-1.5 rounded border border-border/40 text-center hover:border-accent transition-colors">
               0 Layout Shifts
             </div>

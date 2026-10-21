@@ -11,6 +11,8 @@
 /* 1. Default: Warm Ivory & Caramel */
 :root,
 [data-theme="ivory"] {
+  --color-primary: #B98550;
+  --color-secondary: #FAF7F0;
   --color-bg: #FAF7F0;
   --color-bg-alt: #F0E4D1;
   --color-surface: #FFFFFF;
@@ -21,9 +23,13 @@
   --color-ink: #292B28;
   --color-ink-muted: #686B66;
   --color-ink-faint: #989B95;
+  --theme-glow: rgba(185, 133, 80, 0.28);
+  --theme-arch-gradient: linear-gradient(180deg, #F0E4D1 0%, #FAF7F0 100%);
 }
 
 [data-theme="ivory"][data-mode="dark"] {
+  --color-primary: #FAF7F0;
+  --color-secondary: #B98550;
   --color-bg: #1C1E1B;
   --color-bg-alt: #262924;
   --color-surface: #242622;
@@ -34,141 +40,183 @@
   --color-ink: #FAF7F0;
   --color-ink-muted: #B8BBB3;
   --color-ink-faint: #7E817A;
+  --theme-glow: rgba(223, 190, 153, 0.35);
+  --theme-arch-gradient: linear-gradient(180deg, #262924 0%, #1C1E1B 100%);
 }
 
 /* 2. Forest & Leaf (#064734 & #E0FFC2) */
 [data-theme="forest"] {
-  --color-bg: #F0F9ED;
+  --color-primary: #064734;
+  --color-secondary: #E0FFC2;
+  --color-bg: #F2F9EE;
   --color-bg-alt: #E0FFC2;
   --color-surface: #FFFFFF;
   --color-accent: #064734;
-  --color-accent-light: #186E53;
-  --color-border: #C8E6B8;
+  --color-accent-light: #1C6850;
+  --color-border: #C5E5B3;
   --color-border-subtle: #D8F0CC;
   --color-ink: #064734;
-  --color-ink-muted: #1E5C47;
-  --color-ink-faint: #4E8773;
+  --color-ink-muted: #1E5A44;
+  --color-ink-faint: #4D836E;
+  --theme-glow: rgba(6, 71, 52, 0.32);
+  --theme-arch-gradient: linear-gradient(180deg, #E0FFC2 0%, #F2F9EE 100%);
 }
 
 [data-theme="forest"][data-mode="dark"] {
+  --color-primary: #E0FFC2;
+  --color-secondary: #064734;
   --color-bg: #064734;
-  --color-bg-alt: #08553F;
-  --color-surface: #0A5D45;
+  --color-bg-alt: #09543E;
+  --color-surface: #0C6047;
   --color-accent: #E0FFC2;
-  --color-accent-light: #B7F58A;
-  --color-border: #147255;
-  --color-border-subtle: #0E6248;
+  --color-accent-light: #BFF38D;
+  --color-border: #157356;
+  --color-border-subtle: #0D5D44;
   --color-ink: #E0FFC2;
-  --color-ink-muted: #BDE7A0;
-  --color-ink-faint: #81B868;
+  --color-ink-muted: #C2EC9E;
+  --color-ink-faint: #88BF6A;
+  --theme-glow: rgba(224, 255, 194, 0.4);
+  --theme-arch-gradient: linear-gradient(180deg, #0C6047 0%, #064734 100%);
 }
 
 /* 3. Cherry & Alabaster (#890149 & #F3F3E7) */
 [data-theme="cherry"] {
-  --color-bg: #F3F3E7;
-  --color-bg-alt: #E8E8D8;
+  --color-primary: #890149;
+  --color-secondary: #F3F3E7;
+  --color-bg: #F5F5EC;
+  --color-bg-alt: #E8E8DC;
   --color-surface: #FFFFFF;
   --color-accent: #890149;
-  --color-accent-light: #BF1E72;
-  --color-border: #DDDDC9;
+  --color-accent-light: #B81B6D;
+  --color-border: #DEDEC9;
   --color-border-subtle: #E8E8DA;
-  --color-ink: #2A091A;
-  --color-ink-muted: #672649;
-  --color-ink-faint: #965C7B;
+  --color-ink: #290718;
+  --color-ink-muted: #682548;
+  --color-ink-faint: #98597B;
+  --theme-glow: rgba(137, 1, 73, 0.32);
+  --theme-arch-gradient: linear-gradient(180deg, #E8E8DC 0%, #F5F5EC 100%);
 }
 
 [data-theme="cherry"][data-mode="dark"] {
+  --color-primary: #F3F3E7;
+  --color-secondary: #890149;
   --color-bg: #890149;
-  --color-bg-alt: #70003A;
-  --color-surface: #9E0B58;
+  --color-bg-alt: #73003C;
+  --color-surface: #9E0957;
   --color-accent: #F3F3E7;
   --color-accent-light: #FFFFFF;
-  --color-border: #A91864;
-  --color-border-subtle: #790342;
+  --color-border: #B01869;
+  --color-border-subtle: #7D0343;
   --color-ink: #F3F3E7;
-  --color-ink-muted: #E2E2D0;
-  --color-ink-faint: #B7B7A5;
+  --color-ink-muted: #E6E6D5;
+  --color-ink-faint: #BAAFAF;
+  --theme-glow: rgba(243, 243, 231, 0.4);
+  --theme-arch-gradient: linear-gradient(180deg, #9E0957 0%, #890149 100%);
 }
 
 /* 4. Midnight Indigo & Vanilla (#282B4A & #EEEBDA) */
 [data-theme="indigo"] {
+  --color-primary: #282B4A;
+  --color-secondary: #EEEBDA;
   --color-bg: #EEEBDA;
-  --color-bg-alt: #E3DFCB;
+  --color-bg-alt: #E2DEC7;
   --color-surface: #FFFFFF;
   --color-accent: #282B4A;
   --color-accent-light: #4A4F7D;
-  --color-border: #D6D1BC;
-  --color-border-subtle: #E3DFC9;
-  --color-ink: #191B33;
-  --color-ink-muted: #474A6F;
-  --color-ink-faint: #767A9E;
+  --color-border: #D5CFB9;
+  --color-border-subtle: #E0DBC6;
+  --color-ink: #1A1D36;
+  --color-ink-muted: #484B6F;
+  --color-ink-faint: #787B9F;
+  --theme-glow: rgba(40, 43, 74, 0.32);
+  --theme-arch-gradient: linear-gradient(180deg, #E2DEC7 0%, #EEEBDA 100%);
 }
 
 [data-theme="indigo"][data-mode="dark"] {
+  --color-primary: #EEEBDA;
+  --color-secondary: #282B4A;
   --color-bg: #282B4A;
-  --color-bg-alt: #20223D;
+  --color-bg-alt: #1F223D;
   --color-surface: #34385E;
   --color-accent: #EEEBDA;
   --color-accent-light: #FFFFFF;
-  --color-border: #434875;
+  --color-border: #444976;
   --color-border-subtle: #33375C;
   --color-ink: #EEEBDA;
-  --color-ink-muted: #D8D4BE;
-  --color-ink-faint: #AAA58E;
+  --color-ink-muted: #D8D4BC;
+  --color-ink-faint: #ABA68F;
+  --theme-glow: rgba(238, 235, 218, 0.4);
+  --theme-arch-gradient: linear-gradient(180deg, #34385E 0%, #282B4A 100%);
 }
 
 /* 5. Plum & Milk (#381932 & #FFF3E6) */
 [data-theme="plum"] {
+  --color-primary: #381932;
+  --color-secondary: #FFF3E6;
   --color-bg: #FFF3E6;
-  --color-bg-alt: #F7E2CF;
+  --color-bg-alt: #F5E0CD;
   --color-surface: #FFFFFF;
   --color-accent: #381932;
-  --color-accent-light: #6A3760;
-  --color-border: #EBD6C3;
-  --color-border-subtle: #F3E3D3;
-  --color-ink: #241021;
-  --color-ink-muted: #5B3A54;
-  --color-ink-faint: #8E6D88;
+  --color-accent-light: #69365F;
+  --color-border: #E8D2BF;
+  --color-border-subtle: #F2DFCE;
+  --color-ink: #240F21;
+  --color-ink-muted: #5B3954;
+  --color-ink-faint: #8F6C88;
+  --theme-glow: rgba(56, 25, 50, 0.32);
+  --theme-arch-gradient: linear-gradient(180deg, #F5E0CD 0%, #FFF3E6 100%);
 }
 
 [data-theme="plum"][data-mode="dark"] {
+  --color-primary: #FFF3E6;
+  --color-secondary: #381932;
   --color-bg: #381932;
-  --color-bg-alt: #2A1225;
-  --color-surface: #492442;
+  --color-bg-alt: #2B1226;
+  --color-surface: #4B2444;
   --color-accent: #FFF3E6;
-  --color-accent-light: #FFD9B3;
-  --color-border: #593051;
-  --color-border-subtle: #45223E;
+  --color-accent-light: #FFE1C2;
+  --color-border: #5C3154;
+  --color-border-subtle: #45233F;
   --color-ink: #FFF3E6;
-  --color-ink-muted: #EBD2BA;
-  --color-ink-faint: #B79B81;
+  --color-ink-muted: #EAD1B9;
+  --color-ink-faint: #B89C82;
+  --theme-glow: rgba(255, 243, 230, 0.4);
+  --theme-arch-gradient: linear-gradient(180deg, #4B2444 0%, #381932 100%);
 }
 
 /* 6. Orange & Milk (#EC5E27 & #FDFDF1) */
 [data-theme="orange"] {
+  --color-primary: #EC5E27;
+  --color-secondary: #FDFDF1;
   --color-bg: #FDFDF1;
-  --color-bg-alt: #F4F4DB;
+  --color-bg-alt: #F4F4D6;
   --color-surface: #FFFFFF;
   --color-accent: #EC5E27;
-  --color-accent-light: #FF8757;
-  --color-border: #E8E8CC;
-  --color-border-subtle: #F0F0DB;
-  --color-ink: #252220;
-  --color-ink-muted: #67625D;
-  --color-ink-faint: #9A938D;
+  --color-accent-light: #FF7F4B;
+  --color-border: #E8E8C6;
+  --color-border-subtle: #F0F0D8;
+  --color-ink: #251C17;
+  --color-ink-muted: #68534A;
+  --color-ink-faint: #9B8277;
+  --theme-glow: rgba(236, 94, 39, 0.32);
+  --theme-arch-gradient: linear-gradient(180deg, #F4F4D6 0%, #FDFDF1 100%);
 }
 
 [data-theme="orange"][data-mode="dark"] {
+  --color-primary: #FDFDF1;
+  --color-secondary: #EC5E27;
   --color-bg: #EC5E27;
-  --color-bg-alt: #D44D19;
-  --color-surface: #F86E38;
+  --color-bg-alt: #D64F1A;
+  --color-surface: #F96E37;
   --color-accent: #FDFDF1;
   --color-accent-light: #FFFFFF;
-  --color-border: #FF8657;
+  --color-border: #FF8857;
   --color-border-subtle: #D64F1A;
   --color-ink: #FDFDF1;
-  --color-ink-muted: #EDEEC8;
-  --color-ink-faint: #C8C99C;
+  --color-ink-muted: #EEEECA;
+  --color-ink-faint: #C9C99D;
+  --theme-glow: rgba(253, 253, 241, 0.4);
+  --theme-arch-gradient: linear-gradient(180deg, #F96E37 0%, #EC5E27 100%);
 }
 
 /* ==========================================================================

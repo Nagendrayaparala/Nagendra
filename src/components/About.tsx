@@ -19,7 +19,14 @@ export default function About() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
           {/* Left 5 cols: Avatar Thinking / Process Pose with ScrollReveal */}
           <ScrollReveal delayMs={0} className="lg:col-span-5 flex flex-col items-center">
-            <div className="card-hover-lift relative w-64 h-64 md:w-72 md:h-72 rounded-2xl bg-surface border border-border p-4 shadow-sm flex flex-col items-center justify-end overflow-hidden group">
+            <div
+              className="card-hover-lift relative w-64 h-64 md:w-72 md:h-72 rounded-2xl border border-border p-4 shadow-sm flex flex-col items-center justify-end overflow-hidden group hover:shadow-theme-glow transition-all duration-500"
+              style={{ background: 'var(--theme-arch-gradient)' }}
+            >
+              <div
+                className="animate-halo-breathe absolute inset-4 rounded-full blur-xl -z-10"
+                style={{ background: 'radial-gradient(circle, var(--theme-glow) 0%, transparent 70%)' }}
+              />
               <img
                 src="/avathars/nagendra_portrait.png"
                 alt="Yaparala Nagendra - Process portrait"
